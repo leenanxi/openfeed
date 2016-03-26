@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+                                                 xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                 xmlns:tools="http://schemas.android.com/tools"
+                                                 android:layout_width="match_parent"
+                                                 android:layout_height="match_parent"
+                                                 android:fitsSystemWindows="false">
+
+<android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+    <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:contentScrim="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+</android.support.design.widget.AppBarLayout>
+<FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <FrameLayout
+            android:layout_width="@dimen/card_activity_width"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="@dimen/card_activity_horizontal_margin"
+            android:layout_marginRight="@dimen/card_activity_horizontal_margin"
+            android:layout_marginTop="@dimen/toolbar_height"
+            android:layout_marginBottom="@dimen/toolbar_height"
+            android:background="@color/grey_100"
+            android:transitionName="@string/transition_name_broadcast">
+        <com.leenanxi.android.open.feed.widget.FriendlySwipeRefreshLayout
+                android:id="@+id/swipe_refresh"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            <android.support.v7.widget.RecyclerView
+                    android:id="@+id/broadcast_comment_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:clipToPadding="false"
+                    android:scrollbars="vertical"
+                    android:scrollbarStyle="outsideOverlay" />
+        </com.leenanxi.android.open.feed.widget.FriendlySwipeRefreshLayout>
+        <ProgressBar
+                android:id="@+id/progress"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:indeterminate="true"
+                android:visibility="invisible"/>
+    </FrameLayout>
+</FrameLayout>
+<LinearLayout
+        android:layout_width="@dimen/card_activity_width"
+        android:layout_height="wrap_content"
+        android:minHeight="@dimen/toolbar_height"
+        android:layout_gravity="center_horizontal|bottom"
+        android:layout_marginLeft="@dimen/card_activity_horizontal_margin"
+        android:layout_marginRight="@dimen/card_activity_horizontal_margin"
+        android:paddingLeft="@dimen/toolbar_edit_left_margin"
+        android:paddingRight="@dimen/toolbar_button_right_margin"
+        android:background="@color/card_background_light"
+        android:clickable="true"
+        android:elevation="@dimen/appbar_elevation"
+        android:orientation="horizontal">
+    <EditText
+            android:id="@+id/comment"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="@dimen/toolbar_edit_right_margin"
+            android:hint="@string/broadcast_send_comment_hint"
+            android:maxLines="4">
+        <requestFocus />
+    </EditText>
+    <ImageButton
+            android:id="@+id/send"
+            android:layout_width="@dimen/touch_target_size"
+            android:layout_height="@dimen/touch_target_size"
+            android:layout_gravity="center_vertical"
+            android:background="?selectableItemBackgroundBorderless"
+            android:contentDescription="@string/broadcast_send_comment"
+            android:padding="@dimen/icon_button_padding"
+            android:src="@drawable/md_ic_send_black_24dp"
+            android:tint="?colorAccent" />
+</LinearLayout>
+
+
+</android.support.design.widget.CoordinatorLayout>

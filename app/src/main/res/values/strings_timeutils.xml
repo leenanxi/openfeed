@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="just_now">刚刚</string>
+    <string name="minute_format">%1$d分钟前</string>
+    <string name="hour_format">%1$d小时前</string>
+    <string name="today_hour_minute_pattern">今天 HH:mm</string>
+    <string name="yesterday_hour_minute_pattern">昨天 HH:mm</string>
+    <string name="month_day_hour_minute_pattern">MM月dd日 HH:mm</string>
+    <string name="date_hour_minute_pattern">yyyy年MM月dd日 HH:mm</string>
+    <string name="today">今天</string>
+    <string name="yesterday">昨天</string>
+    <string name="month_day_pattern">MM月dd日</string>
+    <string name="date_pattern">yyyy年MM月dd日</string>
+</resources>

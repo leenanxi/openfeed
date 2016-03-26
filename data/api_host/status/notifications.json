@@ -1,0 +1,31 @@
+{
+  "count": 20,
+  "notifications": [
+    {
+      "id": 1,
+      "is_read": false,
+      "target_uri": "http://m.douban.com",
+      "text": "也许这样会更好呢",
+      "time": "2016-03-26 12:00:00"
+    },{
+      "id": 2,
+      "is_read": true,
+      "target_uri": "http://m.douban.com",
+      "text": "今天吃饭了吗?",
+      "time": "2016-03-25 12:00:00"
+    },{
+      "id": 3,
+      "is_read": false,
+      "target_uri": "http://m.douban.com",
+      "text": "王晓红关注了你?",
+      "time": "2016-03-23 12:00:00"
+    },{
+      "id": 4,
+      "is_read": false,
+      "target_uri": "http://m.douban.com",
+      "text": "消息AA收到3条回复",
+      "time": "2016-03-27 12:00:00"
+    }
+  ],
+  "start": 0
+}

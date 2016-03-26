@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">Feed</string>
+
+
+    <string name="ok">确定</string>
+    <string name="cancel">取消</string>
+    <string name="close">关闭</string>
+    <string name="no">否</string>
+    <string name="reload">重新加载</string>
+    <string name="yes">是</string>
+
+    <string name="gallery_title">查看照片</string>
+    <string name="gallery_load_timeout">加载超时</string>
+    <string name="gallery_load_error">加载错误</string>
+
+    <string name="activity_not_found">未找到可处理此操作的应用</string>
+    <string name="copied_to_clipboard_format">已复制到剪贴板：\n%1$s</string>
+    <string name="load_error">加载失败</string>
+    <string name="report_abuse">举报不良信息</string>
+    <string name="view_all">查看全部</string>
+
+
+    <string name="webview_title">查看网页</string>
+    <string name="webview_copy_url">复制链接</string>
+    <string name="webview_copy_url_empty">链接为空</string>
+    <string name="webview_open_in_browser">在浏览器中打开</string>
+
+    <string name="navigation_drawer_open">打开</string>
+    <string name="navigation_drawer_close">关闭</string>
+
+    <string name="action_settings">设置</string>
+</resources>

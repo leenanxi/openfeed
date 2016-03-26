@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
+          package="com.leenanxi.android.open.feed">
+
+    <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS"/>
+    <!-- For HackyApiCredentialHelper. -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.USE_CREDENTIALS"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme.NoActionBar">
+        <activity
+            android:name=".main.ui.SingleMainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar.TransparentStatusBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+                android:name=".account.ui.AuthenticatorActivity"
+                android:label="@string/auth_title_new"
+                android:launchMode="singleTop"/>
+        <activity
+                android:name=".account.ui.AddAccountActivity"
+                android:launchMode="singleTop"
+                android:noHistory="true"
+                android:theme="@style/AppTheme.NoDisplay"/>
+        <activity
+                android:name=".account.ui.SelectAccountActivity"
+                android:launchMode="singleTop"
+                android:noHistory="true"
+                android:theme="@style/AppTheme.NoDisplay"/>
+        <activity
+                android:name=".widget.WebViewActivity"
+                android:label="@string/webview_title"
+                android:configChanges="keyboardHidden|orientation|screenSize"/>
+        <activity
+                android:name=".widget.GalleryActivity"
+                android:label="@string/gallery_title"
+                android:theme="@style/Theme.Gallery"/>
+
+        <activity
+                android:name=".broadcast.ui.BroadcastActivity"
+                android:label="@string/app_name"
+                android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity
+                android:name=".profile.ui.ProfileActivity"
+                android:label="@string/app_name"
+                android:theme="@style/AppTheme.TransparentBackground"
+                android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity
+                android:name=".settings.ui.SettingsActivity"
+                android:label="@string/settings_title"/>
+        <activity
+                android:name=".settings.ui.AboutActivity"
+                android:label="@string/about_title"/>
+        <service
+                android:name=".account.app.AuthenticatorService"
+                tools:ignore="ExportedService">
+            <intent-filter>
+                <action android:name="android.accounts.AccountAuthenticator"/>
+            </intent-filter>
+            <meta-data
+                    android:name="android.accounts.AccountAuthenticator"
+                    android:resource="@xml/authenticator"/>
+        </service>
+    </application>
+
+</manifest>

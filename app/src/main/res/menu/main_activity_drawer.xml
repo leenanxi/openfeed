@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group>
+        <item
+                android:icon="@drawable/md_ic_perm_contact_calendar_black_24dp"
+                android:title="我的名片" />
+        <item
+                android:id="@+id/nav_messages"
+                android:icon="@drawable/md_ic_book_black_24dp"
+                android:numericShortcut="xx"
+                android:title="我的收藏" />
+        <item
+                android:id="@+id/nav_experience"
+                android:icon="@drawable/md_ic_card_giftcard_black_24dp"
+                android:title="体验有礼" />
+        <item
+                android:id="@+id/nav_discussion"
+                android:icon="@drawable/md_ic_thumb_up_black_24dp"
+                android:title="分享推荐" />
+    </group>
+
+    <item android:title="其他">
+        <menu>
+            <item
+                    android:icon="@drawable/md_ic_settings_black_24dp"
+                    android:id="@+id/navigation_settings"
+                    android:title="设置" />
+            <item
+                    android:icon="@drawable/md_ic_exit_to_app_black_24dp"
+                    android:id="@+id/navigation_exit"
+                    android:title="退出登录" />
+            <item
+                    android:icon="@drawable/md_ic_help_black_24dp"
+                    android:id="@+id/navigation_feedback"
+                    android:title="帮助和反馈" />
+        </menu>
+    </item>
+
+</menu>

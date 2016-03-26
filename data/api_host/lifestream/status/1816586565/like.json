@@ -1,0 +1,5 @@
+{
+  "msg": "you have liked the status yet",
+  "code": 11107,
+  "request": "POST \/v2\/lifestream\/status\/1816586565\/like"
+}
