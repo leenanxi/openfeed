@@ -6,8 +6,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import butterknife.Bind;
-import butterknife.ButterKnife;
 import com.leenanxi.android.open.feed.R;
 import com.leenanxi.android.open.feed.api.model.Notification;
 import com.leenanxi.android.open.feed.link.UriHandler;
@@ -64,14 +62,13 @@ public class NotificationAdapter extends SimpleAdapter<Notification,
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
-        @Bind(R.id.text)
         public TextView textText;
-        @Bind(R.id.time)
         public TimeTextView timeText;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            ButterKnife.bind(this, itemView);
+            textText = (TextView) itemView.findViewById(R.id.text);
+            timeText = (TimeTextView) itemView.findViewById(R.id.time);
         }
     }
 }

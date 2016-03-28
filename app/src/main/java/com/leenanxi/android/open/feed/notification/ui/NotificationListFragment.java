@@ -12,8 +12,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
-import butterknife.Bind;
-import butterknife.ButterKnife;
 import com.android.volley.VolleyError;
 import com.leenanxi.android.open.feed.R;
 import com.leenanxi.android.open.feed.api.*;
@@ -40,11 +38,8 @@ public class NotificationListFragment extends Fragment implements RequestFragmen
             + "loading_notification_list";
     private static final String RETAIN_DATA_KEY_VIEW_STATE = KEY_PREFIX + "view_state";
     private final Handler mHandler = new Handler();
-    @Bind(R.id.swipe_refresh)
     SwipeRefreshLayout mSwipeRefreshLayout;
-    @Bind(R.id.notification_list)
     RecyclerView mNotificationList;
-    @Bind(R.id.progress)
     ProgressBar mProgress;
     private RetainDataFragment mRetainDataFragment;
     private NotificationAdapter mNotificationAdapter;
@@ -52,6 +47,12 @@ public class NotificationListFragment extends Fragment implements RequestFragmen
     private boolean mCanLoadMore;
     private boolean mLoadingNotificationList;
     private UnreadNotificationCountListener mUnreadNotificationCountListener;
+
+    private void initViews(View itemView) {
+        mSwipeRefreshLayout = (SwipeRefreshLayout) itemView.findViewById(R.id.swipe_refresh);
+        mNotificationList = (RecyclerView) itemView.findViewById(R.id.notification_list);
+        mProgress = (ProgressBar) itemView.findViewById(R.id.progress);
+    }
 
     @Nullable
     @Override
@@ -63,7 +64,7 @@ public class NotificationListFragment extends Fragment implements RequestFragmen
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ButterKnife.bind(this, view);
+        initViews(view);
     }
 
     @Override

@@ -27,7 +27,7 @@
             android:id="@+id/web"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/toolbar_height" />
+            android:layout_marginTop="@dimen/toolbar_height"/>
     <TextView
             android:id="@+id/error"
             android:layout_width="wrap_content"
@@ -36,6 +36,6 @@
             android:layout_marginLeft="@dimen/screen_edge_horizontal_margin"
             android:layout_marginRight="@dimen/screen_edge_horizontal_margin"
             android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-            android:visibility="gone" />
+            android:visibility="gone"/>
 
 </android.support.design.widget.CoordinatorLayout>

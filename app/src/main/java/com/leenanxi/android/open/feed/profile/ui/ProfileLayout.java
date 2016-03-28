@@ -6,14 +6,12 @@ import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.animation.FastOutLinearInInterpolator;
 import android.support.v4.view.animation.LinearOutSlowInInterpolator;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.ViewGroup;
-import butterknife.BindColor;
-import butterknife.BindInt;
-import butterknife.ButterKnife;
 import com.leenanxi.android.open.feed.R;
 import com.leenanxi.android.open.feed.util.ViewUtils;
 import com.leenanxi.android.open.feed.widget.FlexibleSpaceLayout;
@@ -32,9 +30,7 @@ public class ProfileLayout extends FlexibleSpaceLayout {
                     object.offsetTo(value);
                 }
             };
-    @BindInt(android.R.integer.config_shortAnimTime)
     int mShortAnimationTime;
-    @BindColor(R.color.dark_70_percent)
     int mBackgroundColor;
     private ColorDrawable mWindowBackground;
     private ViewGroup mOffsetContainer;
@@ -64,7 +60,8 @@ public class ProfileLayout extends FlexibleSpaceLayout {
     }
 
     private void init() {
-        ButterKnife.bind(this);
+        mShortAnimationTime = getResources().getInteger(android.R.integer.config_shortAnimTime);
+        ContextCompat.getColor(this.getContext(), R.color.dark_70_percent);
         mWindowBackground = new ColorDrawable(mBackgroundColor);
         ((Activity) getContext()).getWindow().setBackgroundDrawable(mWindowBackground);
     }

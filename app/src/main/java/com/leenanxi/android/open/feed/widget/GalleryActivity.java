@@ -8,9 +8,6 @@ import android.support.v4.view.animation.FastOutSlowInInterpolator;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import butterknife.Bind;
-import butterknife.BindInt;
-import butterknife.ButterKnife;
 import com.leenanxi.android.open.feed.R;
 import com.leenanxi.android.open.feed.api.model.Image;
 import com.leenanxi.android.open.feed.util.systemuihelper.SystemUiHelper;
@@ -21,11 +18,8 @@ public class GalleryActivity extends AppCompatActivity {
     private static final String KEY_PREFIX = GalleryActivity.class.getSimpleName() + '.';
     public static final String EXTRA_IMAGE_LIST = KEY_PREFIX + "image_list";
     public static final String EXTRA_POSITION = KEY_PREFIX + "position";
-    @BindInt(android.R.integer.config_mediumAnimTime)
     int mToolbarHideDuration;
-    @Bind(R.id.toolbar)
     Toolbar mToolbar;
-    @Bind(R.id.viewPager)
     ViewPager mViewPager;
     private SystemUiHelper mSystemUiHelper;
 
@@ -35,11 +29,17 @@ public class GalleryActivity extends AppCompatActivity {
                 .putExtra(EXTRA_POSITION, position);
     }
 
+    private void initViews() {
+        mToolbarHideDuration = getResources().getInteger(android.R.integer.config_mediumAnimTime);
+        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        mViewPager = (ViewPager) findViewById(R.id.viewPager);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.gallery_activity);
-        ButterKnife.bind(this);
+        initViews();
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         mSystemUiHelper = new SystemUiHelper(this, SystemUiHelper.LEVEL_IMMERSIVE,

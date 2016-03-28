@@ -8,8 +8,6 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.*;
-import butterknife.Bind;
-import butterknife.ButterKnife;
 import com.leenanxi.android.open.feed.R;
 import com.leenanxi.android.open.feed.api.model.Attachment;
 import com.leenanxi.android.open.feed.api.model.Broadcast;
@@ -29,39 +27,22 @@ import java.util.ArrayList;
  * leaving attachment and text unchanged (since they cannot change once a broadcast is created).</p>
  */
 public class BroadcastLayout extends LinearLayout {
-    @Bind(R.id.avatar)
     public ImageView mAvatarImage;
-    @Bind(R.id.name)
     public TextView mNameText;
-    @Bind(R.id.time_action)
     public TimeActionTextView mTimeActionText;
-    @Bind(R.id.attachment)
     public RelativeLayout mAttachmentLayout;
-    @Bind(R.id.attachment_image)
     public ImageView mAttachmentImage;
-    @Bind(R.id.attachment_title)
     public TextView mAttachmentTitleText;
-    @Bind(R.id.attachment_description)
     public TextView mAttachmentDescriptionText;
-    @Bind(R.id.single_image)
     public ImageLayout mSingleImageLayout;
-    @Bind(R.id.image_list_layout)
     public FrameLayout mImageListLayout;
-    @Bind(R.id.image_list_description_layout)
     public FrameLayout mImageListDescriptionLayout;
-    @Bind(R.id.image_list_description)
     public TextView mImageListDescriptionText;
-    @Bind(R.id.image_list)
     public RatioHeightRecyclerView mImageList;
-    @Bind(R.id.text_space)
     public Space mTextSpace;
-    @Bind(R.id.text)
     public TextView mTextText;
-    @Bind(R.id.like)
     public CardIconButton mLikeButton;
-    @Bind(R.id.comment)
     public CardIconButton mCommentButton;
-    @Bind(R.id.rebroadcast)
     public CardIconButton mRebroadcastButton;
     private HorizontalImageAdapter mImageListAdapter;
     private Long mBoundBroadcastId;
@@ -87,10 +68,30 @@ public class BroadcastLayout extends LinearLayout {
         init(getContext(), attrs, defStyleAttr, defStyleRes);
     }
 
+    private void initViews() {
+        mAvatarImage = (ImageView) findViewById(R.id.avatar);
+        mNameText = (TextView) findViewById(R.id.name);
+        mTimeActionText = (TimeActionTextView) findViewById(R.id.time_action);
+        mAttachmentLayout = (RelativeLayout) findViewById(R.id.attachment);
+        mAttachmentImage = (ImageView) findViewById(R.id.attachment_image);
+        mAttachmentTitleText = (TextView) findViewById(R.id.attachment_title);
+        mAttachmentDescriptionText = (TextView) findViewById(R.id.attachment_description);
+        mSingleImageLayout = (ImageLayout) findViewById(R.id.single_image);
+        mImageListLayout = (FrameLayout) findViewById(R.id.image_list_layout);
+        mImageListDescriptionLayout = (FrameLayout) findViewById(R.id.image_list_description_layout);
+        mImageListDescriptionText = (TextView) findViewById(R.id.image_list_description);
+        mImageList = (RatioHeightRecyclerView) findViewById(R.id.image_list);
+        mTextSpace = (Space) findViewById(R.id.text_space);
+        mTextText = (TextView) findViewById(R.id.text);
+        mLikeButton = (CardIconButton) findViewById(R.id.like);
+        mCommentButton = (CardIconButton) findViewById(R.id.comment);
+        mRebroadcastButton = (CardIconButton) findViewById(R.id.rebroadcast);
+    }
+
     private void init(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         setOrientation(VERTICAL);
         inflate(context, R.layout.broadcast_layout, this);
-        ButterKnife.bind(this);
+        initViews();
         ViewCompat.setBackground(mImageListDescriptionLayout, DrawableUtils.makeScrimDrawable());
         mImageList.setHasFixedSize(true);
         mImageList.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL,

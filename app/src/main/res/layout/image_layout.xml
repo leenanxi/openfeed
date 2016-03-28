@@ -2,19 +2,19 @@
 <merge xmlns:android="http://schemas.android.com/apk/res/android">
     <!-- LayoutParams will be set the same as parent after inflation. -->
     <com.leenanxi.android.open.feed.widget.RatioImageView
-        android:id="@+id/imagelayout_image"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:maxHeight="@dimen/image_max_height" />
+            android:id="@+id/imagelayout_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxHeight="@dimen/image_max_height"/>
     <ImageView
-        android:id="@+id/imagelayout_gif"
-        android:layout_width="36dp"
-        android:layout_height="36dp"
-        android:layout_marginLeft="@dimen/card_content_horizontal_margin"
-        android:layout_marginRight="@dimen/card_content_horizontal_margin"
-        android:layout_marginTop="@dimen/card_content_vertical_space"
-        android:layout_marginBottom="@dimen/card_content_vertical_space"
-        android:layout_gravity="left|bottom"
-        android:background="@color/dark_30_percent"
-        android:src="@drawable/md_ic_gif_white_36dp" />
+            android:id="@+id/imagelayout_gif"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginLeft="@dimen/card_content_horizontal_margin"
+            android:layout_marginRight="@dimen/card_content_horizontal_margin"
+            android:layout_marginTop="@dimen/card_content_vertical_space"
+            android:layout_marginBottom="@dimen/card_content_vertical_space"
+            android:layout_gravity="left|bottom"
+            android:background="@color/dark_30_percent"
+            android:src="@drawable/md_ic_gif_white_36dp"/>
 </merge>

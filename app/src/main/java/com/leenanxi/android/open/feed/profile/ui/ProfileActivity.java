@@ -9,8 +9,6 @@ import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import butterknife.Bind;
-import butterknife.ButterKnife;
 import com.android.volley.VolleyError;
 import com.leenanxi.android.open.feed.R;
 import com.leenanxi.android.open.feed.api.ApiError;
@@ -47,15 +45,10 @@ public class ProfileActivity extends AppCompatActivity implements RequestFragmen
     private static final String RETAIN_DATA_KEY_BROADCAST_LIST = KEY_PREFIX + "broadcast_list";
     private static final String RETAIN_DATA_KEY_LOADING_BROADCAST_LIST = KEY_PREFIX
             + "loading_broadcast_list";
-    @Bind(R.id.scroll)
     ProfileLayout mScrollLayout;
-    @Bind(R.id.header)
     ProfileHeaderLayout mHeaderLayout;
-    @Bind(R.id.dismiss)
     View mDismissView;
-    @Bind(R.id.toolbar)
     Toolbar mToolbar;
-    @Bind(R.id.broadcasts)
     ProfileBroadcastsLayout mBroadcastsLayout;
     private String mUserIdOrUid;
     private User mUser;
@@ -80,12 +73,20 @@ public class ProfileActivity extends AppCompatActivity implements RequestFragmen
                 .putExtra(ProfileActivity.EXTRA_USER_INFO, userInfo);
     }
 
+    private void initViews() {
+        mScrollLayout = (ProfileLayout) findViewById(R.id.scroll);
+        mHeaderLayout = (ProfileHeaderLayout) findViewById(R.id.header);
+        mDismissView = (View) findViewById(R.id.dismiss);
+        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        mBroadcastsLayout = (ProfileBroadcastsLayout) findViewById(R.id.broadcasts);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         overridePendingTransition(0, 0);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profile_activity);
-        ButterKnife.bind(this);
+        initViews();
         CustomTabsHelperFragment.attachTo(this);
         mRetainDataFragment = RetainDataFragment.attachTo(this);
         mScrollLayout.setListener(new ProfileLayout.Listener() {
@@ -195,19 +196,16 @@ public class ProfileActivity extends AppCompatActivity implements RequestFragmen
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.action_send_doumail:
-                // TODO
-                return true;
-            case R.id.action_blacklist:
-                // TODO
-                return true;
-            case R.id.action_report_abuse:
-                // TODO
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
+        // TODO
+        int id = item.getItemId();
+        if (id == R.id.action_send_doumail) {
+            return true;
+        } else if (id == R.id.action_blacklist) {
+            return true;
+        } else if (id == R.id.action_report_abuse) {
+            return true;
         }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

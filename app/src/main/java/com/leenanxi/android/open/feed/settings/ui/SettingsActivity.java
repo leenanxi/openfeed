@@ -2,10 +2,8 @@ package com.leenanxi.android.open.feed.settings.ui;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.view.MenuItem;
-import com.leenanxi.android.open.feed.main.SinglePaneActivity;
+import com.leenanxi.android.open.feed.widget.SinglePaneActivity;
 
 public class SettingsActivity extends SinglePaneActivity {
 

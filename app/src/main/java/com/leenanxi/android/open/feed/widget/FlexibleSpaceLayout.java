@@ -15,8 +15,6 @@ import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.*;
 import android.widget.LinearLayout;
-import butterknife.BindInt;
-import butterknife.ButterKnife;
 
 public class FlexibleSpaceLayout extends LinearLayout {
     public static final IntProperty<FlexibleSpaceLayout> SCROLL =
@@ -32,7 +30,6 @@ public class FlexibleSpaceLayout extends LinearLayout {
                 }
             };
     private static final int INVALID_POINTER_ID = -1;
-    @BindInt(android.R.integer.config_mediumAnimTime)
     int mMediumAnimationTime;
     private int mTouchSlop;
     private int mMinimumFlingVelocity;
@@ -72,7 +69,7 @@ public class FlexibleSpaceLayout extends LinearLayout {
     }
 
     private void init(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-        ButterKnife.bind(this);
+        mMediumAnimationTime = getResources().getInteger(android.R.integer.config_mediumAnimTime);
         setFocusable(true);
         setDescendantFocusability(FOCUS_AFTER_DESCENDANTS);
         setOrientation(VERTICAL);

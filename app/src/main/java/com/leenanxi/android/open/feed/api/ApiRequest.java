@@ -7,12 +7,10 @@ import com.android.volley.toolbox.HttpHeaderParser;
 import com.google.gson.Gson;
 import com.google.gson.JsonParseException;
 import com.google.gson.reflect.TypeToken;
-import com.leenanxi.android.open.feed.api.model.Notification;
 import com.leenanxi.android.open.feed.network.Request;
 import com.leenanxi.android.open.feed.network.Volley;
 import com.leenanxi.android.open.feed.util.GsonHelper;
 import com.leenanxi.android.open.feed.util.LogUtils;
-import org.apache.commons.logging.Log;
 
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Type;
@@ -46,7 +44,7 @@ public class ApiRequest<T> extends Request<T> {
         String responseString;
         try {
             responseString = new String(response.data,
-                    HttpHeaderParser.parseCharset(response.headers,"UTF-8"));
+                    HttpHeaderParser.parseCharset(response.headers, "UTF-8"));
         } catch (UnsupportedEncodingException e) {
             return Response.error(new ParseError(e));
         }

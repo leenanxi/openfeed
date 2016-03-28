@@ -19,31 +19,28 @@ import com.leenanxi.android.open.feed.BuildConfig;
 import com.leenanxi.android.open.feed.R;
 import com.leenanxi.android.open.feed.account.util.AccountUtils;
 import com.leenanxi.android.open.feed.notification.ui.NotificationListFragment;
-import com.leenanxi.android.open.feed.settings.ui.SettingsActivity;
 import com.leenanxi.android.open.feed.widget.ActionItemBadge;
 
 public class MainActivity extends AppCompatActivity implements NotificationListFragment.UnreadNotificationCountListener {
     private MenuItem mNotificationMenu;
     private int mUnreadNotificationCount;
     private NotificationListFragment mNotificationListFragment;
-
+    private DrawerLayout mDrawerLayout;
 
     public DrawerLayout getDrawerLayout() {
         return mDrawerLayout;
+    }
+
+    protected void setDrawerLayout(DrawerLayout mDrawerLayout) {
+        this.mDrawerLayout = mDrawerLayout;
     }
 
     public NotificationListFragment getNotificationListFragment() {
         return mNotificationListFragment;
     }
 
-    private DrawerLayout mDrawerLayout;
-
     protected void setNotificationListFragment(NotificationListFragment mNotificationListFragment) {
         this.mNotificationListFragment = mNotificationListFragment;
-    }
-
-    protected void setDrawerLayout(DrawerLayout mDrawerLayout) {
-        this.mDrawerLayout = mDrawerLayout;
     }
 
     @Override
@@ -72,7 +69,7 @@ public class MainActivity extends AppCompatActivity implements NotificationListF
             LinearLayout headerView = (LinearLayout) navigationView.getHeaderView(0);
             ((ImageView) headerView.findViewById(R.id.avatar)).setVisibility(View.VISIBLE);
             ((TextView) headerView.findViewById(R.id.name)).setText(AccountUtils.getUserName(this));
-           // ((TextView) headerView.findViewById(R.id.tag)).setText(AccountUtils.getActiveAccount(this).toString());
+            // ((TextView) headerView.findViewById(R.id.tag)).setText(AccountUtils.getActiveAccount(this).toString());
         }
 
     }
@@ -89,14 +86,13 @@ public class MainActivity extends AppCompatActivity implements NotificationListF
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.action_notification:
-                mNotificationListFragment.refresh();
-                mDrawerLayout.openDrawer(GravityCompat.END);
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
+        int id = item.getItemId();
+        if (id == R.id.action_notification) {
+            mNotificationListFragment.refresh();
+            mDrawerLayout.openDrawer(GravityCompat.END);
+            return true;
         }
+        return super.onOptionsItemSelected(item);
     }
 
 

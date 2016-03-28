@@ -5,8 +5,6 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
-import butterknife.Bind;
-import butterknife.ButterKnife;
 import com.leenanxi.android.open.feed.R;
 import com.leenanxi.android.open.feed.util.ViewUtils;
 
@@ -94,12 +92,11 @@ public class LoadMoreAdapter extends MergeAdapter {
         }
 
         static class ViewHolder extends RecyclerView.ViewHolder {
-            @Bind(R.id.progress)
             public ProgressBar progress;
 
             public ViewHolder(View itemView) {
                 super(itemView);
-                ButterKnife.bind(this, itemView);
+                progress = (ProgressBar) itemView.findViewById(R.id.progress);
             }
         }
     }

@@ -1,30 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="CardIconButton">
-        <attr name="android:src" />
-        <attr name="android:text" />
+        <attr name="android:src"/>
+        <attr name="android:text"/>
     </declare-styleable>
     <declare-styleable name="ContentStateLayout">
-        <attr name="animationEnabled" format="boolean|reference" />
-        <attr name="loadingView" format="reference" />
-        <attr name="contentView" format="reference" />
-        <attr name="emptyView" format="reference" />
-        <attr name="errorView" format="reference" />
+        <attr name="animationEnabled" format="boolean|reference"/>
+        <attr name="loadingView" format="reference"/>
+        <attr name="contentView" format="reference"/>
+        <attr name="emptyView" format="reference"/>
+        <attr name="errorView" format="reference"/>
     </declare-styleable>
     <declare-styleable name="ImageLayout">
         <attr name="fillOrientation" format="enum">
-            <enum name="horizontal" value="0" />
-            <enum name="vertical" value="1" />
+            <enum name="horizontal" value="0"/>
+            <enum name="vertical" value="1"/>
         </attr>
     </declare-styleable>
     <declare-styleable name="InsetBackgroundFrameLayout">
-        <attr name="insetBackground" format="color|reference" />
+        <attr name="insetBackground" format="color|reference"/>
     </declare-styleable>
     <declare-styleable name="RatioHeightRecyclerView">
-        <attr name="ratio" format="string|reference" />
+        <attr name="ratio" format="string|reference"/>
     </declare-styleable>
     <declare-styleable name="TintStateListImageView">
-        <attr name="tint" format="color|reference" />
+        <attr name="tint" format="color|reference"/>
     </declare-styleable>
 
 </resources>

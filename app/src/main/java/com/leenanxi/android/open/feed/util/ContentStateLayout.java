@@ -28,6 +28,7 @@ public class ContentStateLayout extends FrameLayout {
     private View mEmptyView;
     private View mErrorView;
     private boolean mAnimationEnabled;
+
     public ContentStateLayout(Context context) {
         super(context);
         init(getContext(), null, 0, 0);

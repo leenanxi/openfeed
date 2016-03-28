@@ -13,8 +13,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import butterknife.Bind;
-import butterknife.ButterKnife;
 import com.android.volley.ParseError;
 import com.android.volley.VolleyError;
 import com.leenanxi.android.open.feed.R;
@@ -48,19 +46,12 @@ public class AuthenticatorActivity extends AppCompatAccountAuthenticatorActivity
     private static final String RETAIN_DATA_KEY_USERNAME = KEY_PREFIX + "username";
     private static final String RETAIN_DATA_KEY_PASSWORD = KEY_PREFIX + "password";
     private static final String RETAIN_DATA_KEY_VIEW_STATE = KEY_PREFIX + "view_state";
-    @Bind(R.id.form)
     View mFormLayout;
-    @Bind(R.id.username_layout)
     TextInputLayout mUsernameLayout;
-    @Bind(R.id.username)
     EditText mUsernameEdit;
-    @Bind(R.id.password_layout)
     TextInputLayout mPasswordLayout;
-    @Bind(R.id.password)
     EditText mPasswordEdit;
-    @Bind(R.id.login)
     Button mLoginButton;
-    @Bind(R.id.progress)
     ProgressBar mProgress;
     private RetainDataFragment mRetainDataFragment;
     private String mAuthMode;
@@ -82,6 +73,16 @@ public class AuthenticatorActivity extends AppCompatAccountAuthenticatorActivity
         return intent;
     }
 
+    private void initViews() {
+        mFormLayout = (View) findViewById(R.id.form);
+        mUsernameLayout = (TextInputLayout) findViewById(R.id.username_layout);
+        mUsernameEdit = (EditText) findViewById(R.id.username);
+        mPasswordLayout = (TextInputLayout) findViewById(R.id.password_layout);
+        mPasswordEdit = (EditText) findViewById(R.id.password);
+        mLoginButton = (Button) findViewById(R.id.login);
+        mProgress = (ProgressBar) findViewById(R.id.progress);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -97,7 +98,7 @@ public class AuthenticatorActivity extends AppCompatAccountAuthenticatorActivity
             mPassword = intent.getStringExtra(EXTRA_PASSWORD);
         }
         setContentView(R.layout.authenticator_activity);
-        ButterKnife.bind(this);
+        initViews();
         // TODO: Make the card slide in from bottom.
         if (!TextUtils.isEmpty(mUsername)) {
             mUsernameEdit.setText(mUsername);

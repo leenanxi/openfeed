@@ -15,8 +15,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
-import butterknife.Bind;
-import butterknife.ButterKnife;
 import com.android.volley.VolleyError;
 import com.leenanxi.android.open.feed.R;
 import com.leenanxi.android.open.feed.account.util.AccountUtils;
@@ -34,7 +32,10 @@ import com.leenanxi.android.open.feed.network.RequestFragment;
 import com.leenanxi.android.open.feed.settings.contract.Settings;
 import com.leenanxi.android.open.feed.util.*;
 import com.leenanxi.android.open.feed.util.customtabshelper.CustomTabsHelperFragment;
-import com.leenanxi.android.open.feed.widget.*;
+import com.leenanxi.android.open.feed.widget.LoadMoreAdapter;
+import com.leenanxi.android.open.feed.widget.NoChangeAnimationItemAnimator;
+import com.leenanxi.android.open.feed.widget.OnVerticalScrollWithPagingSlopListener;
+import com.leenanxi.android.open.feed.widget.RetainDataFragment;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
@@ -54,18 +55,14 @@ public class BroadcastListFragment extends Fragment implements RequestFragment.L
             + "loading_broadcast_list";
     private static final String RETAIN_DATA_KEY_VIEW_STATE = KEY_PREFIX + "view_state";
     private final Handler mHandler = new Handler();
-    @Bind(R.id.swipe_refresh)
     SwipeRefreshLayout mSwipeRefreshLayout;
-    @Bind(R.id.broadcast_list)
     RecyclerView mBroadcastList;
-    @Bind(R.id.progress)
     ProgressBar mProgress;
     private RetainDataFragment mRetainDataFragment;
     private BroadcastAdapter mBroadcastAdapter;
     private LoadMoreAdapter mAdapter;
     private boolean mCanLoadMore;
     private boolean mLoadingBroadcastList;
-
     /**
      * @deprecated Use {@link #newInstance()} instead.
      */
@@ -75,6 +72,12 @@ public class BroadcastListFragment extends Fragment implements RequestFragment.L
     public static BroadcastListFragment newInstance() {
         //noinspection deprecation
         return new BroadcastListFragment();
+    }
+
+    private void initViews(View itemView) {
+        mSwipeRefreshLayout = (SwipeRefreshLayout) itemView.findViewById(R.id.swipe_refresh);
+        mBroadcastList = (RecyclerView) itemView.findViewById(R.id.broadcast_list);
+        mProgress = (ProgressBar) itemView.findViewById(R.id.progress);
     }
 
     @Nullable
@@ -87,7 +90,7 @@ public class BroadcastListFragment extends Fragment implements RequestFragment.L
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ButterKnife.bind(this, view);
+        initViews(view);
     }
 
     @Override

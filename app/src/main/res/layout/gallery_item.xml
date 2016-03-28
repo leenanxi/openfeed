@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <uk.co.senab.photoview.PhotoView
-        android:id="@+id/image"
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent">
+    <uk.co.senab.photoview.PhotoView
+            android:id="@+id/image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
     <TextView
-        android:id="@+id/error"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:singleLine="true"
-        android:textAppearance="@style/TextAppearance.AppCompat.Title"
-        android:visibility="invisible" />
+            android:id="@+id/error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:singleLine="true"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            android:visibility="invisible"/>
     <ProgressBar
             android:id="@+id/progress"
             style="?android:attr/progressBarStyle"

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <merge
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
     <com.leenanxi.android.open.feed.widget.FriendlyViewPager
-        android:id="@+id/viewPager"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+            android:id="@+id/viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
     <!-- Don't set background color on this layout because it will mess up with wrap_content. -->
     <!-- Appbar layout must be on top of content so that transition can have correct z-order. -->
     <!-- Use a wrapping layout to clip toolbar in order to avoid overlap with status bar. -->
@@ -26,7 +26,7 @@
                 android:background="@color/dark_50_percent"
                 app:navigationIcon="@drawable/md_ic_back_white_24dp"
                 app:popupTheme="?actionBarPopupTheme"
-                app:titleMarginStart="@dimen/toolbar_title_left_margin" />
+                app:titleMarginStart="@dimen/toolbar_title_left_margin"/>
     </FrameLayout>
 
 </merge>

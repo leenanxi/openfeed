@@ -17,8 +17,6 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
-import butterknife.Bind;
-import butterknife.ButterKnife;
 import com.android.volley.VolleyError;
 import com.leenanxi.android.open.feed.R;
 import com.leenanxi.android.open.feed.account.util.AccountUtils;
@@ -65,19 +63,12 @@ public class BroadcastActivity extends AppCompatActivity implements RequestFragm
             + "loading_broadcast_or_comment_list";
     private static final String RETAIN_DATA_KEY_SENDING_COMMENT = KEY_PREFIX + "sending_comment";
     private static final String RETAIN_DATA_KEY_VIEW_STATE = KEY_PREFIX + "view_state";
-    @Bind(android.R.id.content)
     FrameLayout mContentLayout;
-    @Bind(R.id.toolbar)
     Toolbar mToolbar;
-    @Bind(R.id.swipe_refresh)
     SwipeRefreshLayout mSwipeRefreshLayout;
-    @Bind(R.id.broadcast_comment_list)
     RecyclerView mBroadcastCommentList;
-    @Bind(R.id.progress)
     ProgressBar mProgress;
-    @Bind(R.id.comment)
     EditText mCommentEdit;
-    @Bind(R.id.send)
     ImageButton mSendButton;
     private long mBroadcastId;
     private RetainDataFragment mRetainDataFragment;
@@ -103,6 +94,16 @@ public class BroadcastActivity extends AppCompatActivity implements RequestFragm
                 .putExtra(BroadcastActivity.EXTRA_BROADCAST_ID, broadcastId);
     }
 
+    private void initViews() {
+        mContentLayout = (FrameLayout) findViewById(android.R.id.content);
+        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh);
+        mBroadcastCommentList = (RecyclerView) findViewById(R.id.broadcast_comment_list);
+        mProgress = (ProgressBar) findViewById(R.id.progress);
+        mCommentEdit = (EditText) findViewById(R.id.comment);
+        mSendButton = (ImageButton) findViewById(R.id.send);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         TransitionUtils.setupTransitionBeforeDecorate(this);
@@ -110,7 +111,7 @@ public class BroadcastActivity extends AppCompatActivity implements RequestFragm
         setContentView(R.layout.broadcast_activity);
         TransitionUtils.setEnterReturnExplode(this);
         TransitionUtils.setupTransitionAfterSetContentView(this);
-        ButterKnife.bind(this);
+        initViews();
         CustomTabsHelperFragment.attachTo(this);
         mRetainDataFragment = RetainDataFragment.attachTo(this);
         mContentLayout.setOnClickListener(new View.OnClickListener() {
@@ -273,19 +274,18 @@ public class BroadcastActivity extends AppCompatActivity implements RequestFragm
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                supportFinishAfterTransition();
-                return true;
-            case R.id.action_copy_text:
-                copyText();
-                return true;
-            case R.id.action_delete:
-                onDeleteBroadcast();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
+        int id = item.getItemId();
+        if (id == android.R.id.home) {
+            supportFinishAfterTransition();
+            return true;
+        } else if (id == R.id.action_copy_text) {
+            copyText();
+            return true;
+        } else if (id == R.id.action_delete) {
+            onDeleteBroadcast();
+            return true;
         }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

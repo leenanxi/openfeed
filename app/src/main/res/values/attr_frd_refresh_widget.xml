@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="FriendlySwipeRefreshLayout">
-        <attr name="progressOffset" format="dimension|reference" />
-        <attr name="progressDistanceOffset" format="dimension|reference" />
+        <attr name="progressOffset" format="dimension|reference"/>
+        <attr name="progressDistanceOffset" format="dimension|reference"/>
     </declare-styleable>
 </resources>

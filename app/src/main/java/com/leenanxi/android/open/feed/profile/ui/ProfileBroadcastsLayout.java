@@ -8,8 +8,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import butterknife.Bind;
-import butterknife.ButterKnife;
 import com.leenanxi.android.open.feed.R;
 import com.leenanxi.android.open.feed.api.model.Broadcast;
 import com.leenanxi.android.open.feed.api.model.Image;
@@ -25,13 +23,9 @@ import java.util.List;
 
 public class ProfileBroadcastsLayout extends FriendlyCardView {
     private static final int BROADCAST_COUNT_MAX = 3;
-    @Bind(R.id.title)
     TextView mTitleText;
-    @Bind(R.id.contentState)
     ContentStateLayout mContentStateLayout;
-    @Bind(R.id.broadcast_list)
     LinearLayout mBroadcastList;
-    @Bind(R.id.view_all)
     TextView mViewAllText;
 
     public ProfileBroadcastsLayout(Context context) {
@@ -51,7 +45,10 @@ public class ProfileBroadcastsLayout extends FriendlyCardView {
 
     private void init() {
         inflate(getContext(), R.layout.profile_broadcasts_layout, this);
-        ButterKnife.bind(this);
+        mTitleText = (TextView) findViewById(R.id.title);
+        mContentStateLayout = (ContentStateLayout) findViewById(R.id.contentState);
+        mBroadcastList = (LinearLayout) findViewById(R.id.broadcast_list);
+        mViewAllText = (TextView) findViewById(R.id.view_all);
     }
 
     public void setLoading() {
@@ -124,16 +121,16 @@ public class ProfileBroadcastsLayout extends FriendlyCardView {
     }
 
     static class BroadcastLayoutHolder {
-        @Bind(R.id.image)
         public ImageView image;
-        @Bind(R.id.text)
         public TextView textText;
-        @Bind(R.id.time_action)
         public TimeActionTextView timeActionText;
+
         public long boundBroadcastId;
 
-        public BroadcastLayoutHolder(View broadcastLayout) {
-            ButterKnife.bind(this, broadcastLayout);
+        public BroadcastLayoutHolder(View itemView) {
+            image = (ImageView) itemView.findViewById(R.id.image);
+            textText = (TextView) itemView.findViewById(R.id.text);
+            timeActionText = (TimeActionTextView) itemView.findViewById(R.id.time_action);
         }
     }
 }

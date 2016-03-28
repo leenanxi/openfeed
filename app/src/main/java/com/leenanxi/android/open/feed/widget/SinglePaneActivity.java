@@ -1,15 +1,12 @@
-package com.leenanxi.android.open.feed.main;
+package com.leenanxi.android.open.feed.widget;
 
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.view.Window;
-import android.view.WindowManager;
 import com.leenanxi.android.open.feed.R;
 
 /**
@@ -20,6 +17,28 @@ import com.leenanxi.android.open.feed.R;
 public abstract class SinglePaneActivity extends AppCompatActivity {
     private Fragment mFragment;
 
+    /**
+     * Converts an intent into a {@link android.os.Bundle} suitable for use as fragment arguments.
+     */
+    protected static Bundle intentToFragmentArguments(Intent intent) {
+        Bundle arguments = new Bundle();
+        if (intent == null) {
+            return arguments;
+        }
+
+        final Uri data = intent.getData();
+        if (data != null) {
+            arguments.putParcelable("_uri", data);
+        }
+
+        final Bundle extras = intent.getExtras();
+        if (extras != null) {
+            arguments.putAll(intent.getExtras());
+        }
+
+        return arguments;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,7 +48,7 @@ public abstract class SinglePaneActivity extends AppCompatActivity {
         }
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        if(toolbar != null){
+        if (toolbar != null) {
             setSupportActionBar(toolbar);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -64,31 +83,9 @@ public abstract class SinglePaneActivity extends AppCompatActivity {
         return mFragment;
     }
 
-    /**
-     * Converts an intent into a {@link android.os.Bundle} suitable for use as fragment arguments.
-     */
-    protected static Bundle intentToFragmentArguments(Intent intent) {
-        Bundle arguments = new Bundle();
-        if (intent == null) {
-            return arguments;
-        }
-
-        final Uri data = intent.getData();
-        if (data != null) {
-            arguments.putParcelable("_uri", data);
-        }
-
-        final Bundle extras = intent.getExtras();
-        if (extras != null) {
-            arguments.putAll(intent.getExtras());
-        }
-
-        return arguments;
-    }
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId() ==android.R.id.home){
+        if (item.getItemId() == android.R.id.home) {
             finish();
             return true;
         }

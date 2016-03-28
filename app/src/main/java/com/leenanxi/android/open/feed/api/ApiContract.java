@@ -38,6 +38,7 @@ public interface ApiContract {
             String USERNAME = "username";
             String PASSWORD = "password";
             String REFRESH_TOKEN = "refresh_token";
+
             interface GrantTypes {
                 String PASSWORD = "password";
                 String REFRESH_TOKEN = "refresh_token";
@@ -69,6 +70,7 @@ public interface ApiContract {
             String COUNT = "count";
             String START = "start";
             String Q = "q";
+
             interface Urls {
                 String HOME = API_HOST + "lifestream/home_timeline";
                 String USER_FORMAT = API_HOST + "lifestream/user_timeline/%s";
@@ -126,6 +128,7 @@ public interface ApiContract {
             String MSG = "msg";
             String REQUEST = "request";
             String LOCALIZED_MESSAGE = "localized_message";
+
             interface Codes {
                 interface Base {
                     int UNKNOWN_V2_ERROR = 999;

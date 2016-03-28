@@ -14,9 +14,6 @@ import android.view.*;
 import android.webkit.*;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import butterknife.Bind;
-import butterknife.BindDimen;
-import butterknife.ButterKnife;
 import com.leenanxi.android.open.feed.R;
 import com.leenanxi.android.open.feed.util.ClipboardUtils;
 import com.leenanxi.android.open.feed.util.ToastUtils;
@@ -24,15 +21,11 @@ import com.leenanxi.android.open.feed.util.UrlUtils;
 import com.leenanxi.android.open.feed.util.ViewUtils;
 
 public class WebViewActivity extends AppCompatActivity {
-    @Bind(R.id.toolbar)
+
     Toolbar mToolbar;
-    @Bind(R.id.toolbar_progress)
     ProgressBar mProgress;
-    @Bind(R.id.web)
     WebView mWebView;
-    @Bind(R.id.error)
     TextView mErrorText;
-    @BindDimen(R.dimen.toolbar_height)
     int mToolbarHeight;
     private boolean mProgressVisible;
 
@@ -41,12 +34,20 @@ public class WebViewActivity extends AppCompatActivity {
                 .setData(uri);
     }
 
+    private void initViews() {
+        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        mProgress = (ProgressBar) findViewById(R.id.toolbar_progress);
+        mWebView = (WebView) findViewById(R.id.web);
+        mErrorText = (TextView) findViewById(R.id.error);
+        mToolbarHeight = getResources().getDimensionPixelOffset(R.dimen.toolbar_height);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         supportRequestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.webview_activity);
-        ButterKnife.bind(this);
+        initViews();
         setupToolbar();
         setupWebView();
     }
@@ -54,7 +55,7 @@ public class WebViewActivity extends AppCompatActivity {
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-        ButterKnife.bind(this);
+        initViews();
         setupToolbar();
         ViewUtils.setVisibleOrGone(mProgress, mProgressVisible);
         ((ViewGroup.MarginLayoutParams) mWebView.getLayoutParams()).topMargin = mToolbarHeight;
@@ -69,22 +70,21 @@ public class WebViewActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                finish();
-                return true;
-            case R.id.action_reload:
-                reloadWebView();
-                return true;
-            case R.id.action_copy_url:
-                copyUrl();
-                return true;
-            case R.id.action_open_in_browser:
-                openInBrowser();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
+        int id = item.getItemId();
+        if (id == android.R.id.home) {
+            finish();
+            return true;
+        } else if (id == R.id.action_reload) {
+            reloadWebView();
+            return true;
+        } else if (id == R.id.action_copy_url) {
+            copyUrl();
+            return true;
+        } else if (id == R.id.action_open_in_browser) {
+            openInBrowser();
+            return true;
         }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

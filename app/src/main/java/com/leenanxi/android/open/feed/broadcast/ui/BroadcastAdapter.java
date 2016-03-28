@@ -7,8 +7,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import butterknife.Bind;
-import butterknife.ButterKnife;
 import com.leenanxi.android.open.feed.R;
 import com.leenanxi.android.open.feed.api.model.Broadcast;
 import com.leenanxi.android.open.feed.util.RecyclerViewUtils;
@@ -145,16 +143,16 @@ public class BroadcastAdapter extends SimpleAdapter<Broadcast, BroadcastAdapter.
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
-        @Bind(R.id.rebroadcasted_by)
         public TextView rebroadcastedByText;
-        @Bind(R.id.card)
         public CardView cardView;
-        @Bind(R.id.broadcast)
         public BroadcastLayout broadcastLayout;
+
 
         public ViewHolder(View itemView) {
             super(itemView);
-            ButterKnife.bind(this, itemView);
+            rebroadcastedByText = (TextView) itemView.findViewById(R.id.rebroadcasted_by);
+            cardView = (CardView) itemView.findViewById(R.id.card);
+            broadcastLayout = (BroadcastLayout) itemView.findViewById(R.id.broadcast);
         }
     }
 }

@@ -243,8 +243,6 @@ public class AccountUtils {
     }
 
 
-
-
     public static long getUserId(Context context) {
         return getUserId(getActiveAccount(context), context);
     }

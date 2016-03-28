@@ -9,7 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import butterknife.ButterKnife;
 import com.leenanxi.android.open.feed.R;
 
 import java.util.Locale;
@@ -36,6 +35,16 @@ public class SimpleRecyclerViewFragment extends Fragment {
         recyclerView.setAdapter(new LanguageAdapter(availableLocales));
     }
 
+    private static class ViewHolder extends RecyclerView.ViewHolder {
+
+        public TextView mTextView;
+
+        public ViewHolder(TextView v) {
+            super(v);
+            mTextView = v;
+        }
+    }
+
     private class LanguageAdapter extends RecyclerView.Adapter<ViewHolder> {
 
         private Locale[] mLocales;
@@ -60,16 +69,6 @@ public class SimpleRecyclerViewFragment extends Fragment {
         @Override
         public int getItemCount() {
             return mLocales.length;
-        }
-    }
-
-    private static class ViewHolder extends RecyclerView.ViewHolder {
-
-        public TextView mTextView;
-
-        public ViewHolder(TextView v) {
-            super(v);
-            mTextView = v;
         }
     }
 

@@ -14,8 +14,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
-import butterknife.Bind;
-import butterknife.ButterKnife;
 import com.leenanxi.android.open.feed.R;
 import com.leenanxi.android.open.feed.api.model.Broadcast;
 import com.leenanxi.android.open.feed.eventbus.BroadcastUpdatedEvent;
@@ -27,19 +25,13 @@ import org.greenrobot.eventbus.ThreadMode;
 public class BroadcastActivityDialogFragment extends AppCompatDialogFragment {
     private static final String KEY_PREFIX = BroadcastActivityDialogFragment.class.getName() + '.';
     public static final String EXTRA_BROADCAST = KEY_PREFIX + "broadcast";
-    @Bind(R.id.tab)
     TabLayout mTabLayout;
-    @Bind(R.id.viewPager)
     ViewPager mViewPager;
-    @Bind(android.R.id.button1)
     Button mPositiveButton;
-    @Bind(android.R.id.button2)
     Button mNegativeButton;
-    @Bind(android.R.id.button3)
     Button mNeutralButton;
     private TabFragmentPagerAdapter mTabAdapter;
     private Broadcast mBroadcast;
-
     /**
      * @deprecated Use {@link #newInstance(Broadcast)} instead.
      */
@@ -58,6 +50,14 @@ public class BroadcastActivityDialogFragment extends AppCompatDialogFragment {
     public static void show(Broadcast broadcast, FragmentActivity activity) {
         BroadcastActivityDialogFragment.newInstance(broadcast)
                 .show(activity.getSupportFragmentManager(), null);
+    }
+
+    private void initViews(View itemView) {
+        mTabLayout = (TabLayout) itemView.findViewById(R.id.tab);
+        mViewPager = (ViewPager) itemView.findViewById(R.id.viewPager);
+        mPositiveButton = (Button) itemView.findViewById(android.R.id.button1);
+        mNegativeButton = (Button) itemView.findViewById(android.R.id.button2);
+        mNeutralButton = (Button) itemView.findViewById(android.R.id.button3);
     }
 
     @Override
@@ -85,7 +85,7 @@ public class BroadcastActivityDialogFragment extends AppCompatDialogFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ButterKnife.bind(this, view);
+        initViews(view);
     }
 
     @Override

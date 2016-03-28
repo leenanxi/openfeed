@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
-import butterknife.ButterKnife;
 import com.leenanxi.android.open.feed.R;
 import com.leenanxi.android.open.feed.util.CheatSheetUtils;
 import com.leenanxi.android.open.feed.util.ViewCompat;
@@ -30,9 +29,9 @@ public class ActionItemBadge {
         if (!TextUtils.isEmpty(title)) {
             CheatSheetUtils.setup(actionView, title);
         }
-        ImageView iconImage = ButterKnife.findById(actionView, R.id.icon);
+        ImageView iconImage = (ImageView) actionView.findViewById(R.id.icon);
         iconImage.setImageDrawable(icon);
-        TextView badgeText = ButterKnife.findById(actionView, R.id.badge);
+        TextView badgeText = (TextView) actionView.findViewById(R.id.badge);
         badgeText.setTextColor(ViewUtils.getColorFromAttrRes(R.attr.colorPrimary, 0, activity));
         ViewCompat.setBackground(badgeText, new BadgeDrawable());
         update(badgeText, count);
@@ -48,7 +47,9 @@ public class ActionItemBadge {
     }
 
     public static void update(MenuItem menuItem, int count) {
-        update(ButterKnife.<TextView>findById(menuItem.getActionView(), R.id.badge), count);
+        TextView badgeView = (TextView) menuItem.getActionView().findViewById(R.id.badge);
+
+        update(badgeView, count);
     }
 
     public static class BadgeDrawable extends GradientDrawable {

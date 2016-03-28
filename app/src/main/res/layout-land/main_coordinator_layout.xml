@@ -1,34 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fitsSystemWindows="false">
+                                                 xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                 android:layout_width="match_parent"
+                                                 android:layout_height="match_parent"
+                                                 android:fitsSystemWindows="false">
 
     <android.support.design.widget.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay">
 
         <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            app:layout_scrollFlags="scroll|enterAlways"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay">
-        <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_gravity="center|center"
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:orientation="horizontal">
-            <android.support.design.widget.TabLayout
-                    android:id="@+id/tabLayout"
-                    android:layout_width="match_parent"
-                    app:tabIndicatorColor="@color/quantum_yellowA700"
-                    android:layout_height="?attr/actionBarSize" />
-        </LinearLayout>
+                app:layout_scrollFlags="scroll|enterAlways"
+                android:background="?attr/colorPrimary"
+                app:popupTheme="@style/AppTheme.PopupOverlay">
+            <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="center|center"
+                    android:layout_height="?attr/actionBarSize"
+                    android:orientation="horizontal">
+                <android.support.design.widget.TabLayout
+                        android:id="@+id/tabLayout"
+                        android:layout_width="match_parent"
+                        app:tabIndicatorColor="@color/quantum_yellowA700"
+                        android:layout_height="?attr/actionBarSize"/>
+            </LinearLayout>
         </android.support.v7.widget.Toolbar>
     </android.support.design.widget.AppBarLayout>
 
@@ -36,7 +35,7 @@
             android:id="@+id/viewPager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
 
     <android.support.design.widget.FloatingActionButton

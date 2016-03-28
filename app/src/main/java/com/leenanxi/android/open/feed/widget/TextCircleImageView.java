@@ -26,12 +26,15 @@ public class TextCircleImageView extends ImageView {
     private int mTextColor;
     private int mBackgroundColor;
     private String mText;
+
     public TextCircleImageView(Context context) {
         this(context, null);
     }
+
     public TextCircleImageView(Context context, AttributeSet attrs) {
         this(context, attrs, R.attr.TextCircleImageViewStyle);
     }
+
     public TextCircleImageView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         super.setScaleType(SCALE_TYPE);

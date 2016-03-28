@@ -10,14 +10,10 @@ import android.view.Gravity;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import butterknife.Bind;
-import butterknife.ButterKnife;
 import com.leenanxi.android.open.feed.R;
 
 public class CardIconButton extends LinearLayout {
-    @Bind(R.id.cardiconbutton_image)
     ImageView mImage;
-    @Bind(R.id.cardiconbutton_text)
     TextView mText;
 
     public CardIconButton(Context context) {
@@ -47,7 +43,8 @@ public class CardIconButton extends LinearLayout {
         setGravity(Gravity.CENTER_VERTICAL);
         setOrientation(HORIZONTAL);
         inflate(context, R.layout.card_icon_button, this);
-        ButterKnife.bind(this);
+        mImage = (ImageView) findViewById(R.id.cardiconbutton_image);
+        mText = (TextView) findViewById(R.id.cardiconbutton_text);
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.CardIconButton,
                 defStyleAttr, defStyleRes);
         Drawable src = a.getDrawable(R.styleable.CardIconButton_android_src);

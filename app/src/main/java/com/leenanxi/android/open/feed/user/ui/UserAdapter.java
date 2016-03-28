@@ -6,8 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import butterknife.Bind;
-import butterknife.ButterKnife;
 import com.leenanxi.android.open.feed.R;
 import com.leenanxi.android.open.feed.api.model.User;
 import com.leenanxi.android.open.feed.link.UriHandler;
@@ -50,16 +48,16 @@ public class UserAdapter extends SimpleAdapter<User, UserAdapter.ViewHolder> {
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
-        @Bind(R.id.avatar)
         public ImageView avatarImage;
-        @Bind(R.id.name)
         public TextView nameText;
-        @Bind(R.id.description)
         public TextView descriptionText;
+
 
         public ViewHolder(View itemView) {
             super(itemView);
-            ButterKnife.bind(this, itemView);
+            avatarImage = (ImageView) itemView.findViewById(R.id.avatar);
+            nameText = (TextView) itemView.findViewById(R.id.name);
+            descriptionText = (TextView) itemView.findViewById(R.id.description);
         }
     }
 }

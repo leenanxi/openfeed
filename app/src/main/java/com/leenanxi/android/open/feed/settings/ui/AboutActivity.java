@@ -7,26 +7,27 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import butterknife.Bind;
-import butterknife.ButterKnife;
 import com.leenanxi.android.open.feed.R;
 import com.leenanxi.android.open.feed.util.AppUtils;
 import com.leenanxi.android.open.feed.util.ToastUtils;
 import com.leenanxi.android.open.feed.widget.KonamiCodeDetector;
 
 public class AboutActivity extends AppCompatActivity {
-    @Bind(R.id.container)
     LinearLayout mContainerLayout;
-    @Bind(R.id.toolbar)
     Toolbar mToolbar;
-    @Bind(R.id.version)
     TextView mVersionText;
+
+    private void initViews() {
+        mContainerLayout = (LinearLayout) findViewById(R.id.container);
+        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        mVersionText = (TextView) findViewById(R.id.version);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.about_activity);
-        ButterKnife.bind(this);
+        initViews();
         setSupportActionBar(mToolbar);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);

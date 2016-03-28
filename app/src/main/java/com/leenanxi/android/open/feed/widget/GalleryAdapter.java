@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import butterknife.ButterKnife;
 import com.android.volley.TimeoutError;
 import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.request.RequestListener;
@@ -44,9 +43,11 @@ public class GalleryAdapter extends PagerAdapter {
     public View instantiateItem(ViewGroup container, int position) {
         Context context = container.getContext();
         View layout = LayoutInflater.from(context).inflate(R.layout.gallery_item, container, false);
-        PhotoView imageView = ButterKnife.findById(layout, R.id.image);
-        final TextView errorText = ButterKnife.findById(layout, R.id.error);
-        final ProgressBar progressBar = ButterKnife.findById(layout, R.id.progress);
+        PhotoView imageView = (PhotoView) layout.findViewById(R.id.image);
+        final TextView errorText = (TextView) layout.findViewById(R.id.error);
+        final ProgressBar progressBar = (ProgressBar) layout.findViewById(R.id.progress);
+
+
         imageView.setOnViewTapListener(new PhotoViewAttacher.OnViewTapListener() {
             @Override
             public void onViewTap(View view, float x, float y) {

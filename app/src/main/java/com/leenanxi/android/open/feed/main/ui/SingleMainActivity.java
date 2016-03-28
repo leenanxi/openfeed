@@ -4,28 +4,20 @@ import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
 import com.leenanxi.android.open.feed.R;
 import com.leenanxi.android.open.feed.broadcast.ui.BroadcastListFragment;
 import com.leenanxi.android.open.feed.notification.ui.NotificationListFragment;
 import com.leenanxi.android.open.feed.settings.ui.SettingsActivity;
 import com.leenanxi.android.open.feed.simple.SimpleRecyclerViewFragment;
-import com.leenanxi.android.open.feed.widget.ActionItemBadge;
 import com.leenanxi.android.open.feed.widget.TabFragmentPagerAdapter;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class SingleMainActivity  extends MainActivity {
+public class SingleMainActivity extends MainActivity {
     private MenuItem mNotificationMenu;
     private int mUnreadNotificationCount;
 
@@ -86,10 +78,6 @@ public class SingleMainActivity  extends MainActivity {
         setDrawerLayout(drawer);
         return;
     }
-
-
-
-
 
 
 }

@@ -7,8 +7,6 @@ import android.os.Build;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import butterknife.Bind;
-import butterknife.ButterKnife;
 import com.leenanxi.android.open.feed.R;
 import com.leenanxi.android.open.feed.api.model.Image;
 import com.leenanxi.android.open.feed.util.ImageUtils;
@@ -17,9 +15,7 @@ import com.leenanxi.android.open.feed.util.ViewUtils;
 public class ImageLayout extends FrameLayout {
     public static final int FILL_ORIENTATION_HORIZONTAL = 0;
     public static final int FILL_ORIENTATION_VERTICAL = 1;
-    @Bind(R.id.imagelayout_image)
     RatioImageView mImageView;
-    @Bind(R.id.imagelayout_gif)
     ImageView mGifImage;
 
     public ImageLayout(Context context) {
@@ -47,7 +43,8 @@ public class ImageLayout extends FrameLayout {
         setClickable(true);
         setFocusable(true);
         inflate(context, R.layout.image_layout, this);
-        ButterKnife.bind(this);
+        mImageView = (RatioImageView) findViewById(R.id.imagelayout_image);
+        mGifImage = (ImageView) findViewById(R.id.imagelayout_gif);
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.ImageLayout, defStyleAttr,
                 defStyleRes);
         int fillOrientation = a.getInt(R.styleable.ImageLayout_fillOrientation,

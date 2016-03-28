@@ -4,8 +4,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Space;
-import butterknife.Bind;
-import butterknife.ButterKnife;
 import com.leenanxi.android.open.feed.R;
 import com.leenanxi.android.open.feed.api.model.Image;
 import com.leenanxi.android.open.feed.util.ViewUtils;
@@ -52,14 +50,13 @@ public class HorizontalImageAdapter
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
-        @Bind(R.id.image)
         public ImageLayout imageLayout;
-        @Bind(R.id.divider)
         public Space dividerSpace;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            ButterKnife.bind(this, itemView);
+            imageLayout = (ImageLayout) itemView.findViewById(R.id.image);
+            dividerSpace = (Space) itemView.findViewById(R.id.divider);
         }
     }
 }

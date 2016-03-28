@@ -1,24 +1,13 @@
 package com.leenanxi.android.open.feed.main.ui;
 
 import android.os.Bundle;
-import android.os.StrictMode;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.leenanxi.android.open.feed.BuildConfig;
 import com.leenanxi.android.open.feed.R;
-import com.leenanxi.android.open.feed.account.util.AccountUtils;
 import com.leenanxi.android.open.feed.notification.ui.NotificationListFragment;
 import com.leenanxi.android.open.feed.settings.ui.SettingsActivity;
-import com.leenanxi.android.open.feed.widget.ActionItemBadge;
 
 /**
  * Created by leenanxi on 16/3/26.
@@ -65,8 +54,6 @@ public class FragmentMainActiviy extends MainActivity {
 
         super.setContentViews(savedInstanceState);
     }
-
-
 
 
 }

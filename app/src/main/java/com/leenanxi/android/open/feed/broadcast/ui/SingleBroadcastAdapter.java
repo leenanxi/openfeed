@@ -4,8 +4,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import butterknife.Bind;
-import butterknife.ButterKnife;
 import com.leenanxi.android.open.feed.R;
 import com.leenanxi.android.open.feed.api.model.Broadcast;
 import com.leenanxi.android.open.feed.util.ViewUtils;
@@ -110,14 +108,14 @@ public class SingleBroadcastAdapter
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
-        @Bind(R.id.broadcast)
+
         public BroadcastLayout broadcastLayout;
-        @Bind(R.id.view_activity)
         public Button viewActivityButton;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            ButterKnife.bind(this, itemView);
+            broadcastLayout = (BroadcastLayout) itemView.findViewById(R.id.broadcast);
+            viewActivityButton = (Button) itemView.findViewById(R.id.view_activity);
         }
     }
 }

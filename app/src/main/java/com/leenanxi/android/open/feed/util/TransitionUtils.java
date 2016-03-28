@@ -10,7 +10,6 @@ import android.transition.Explode;
 import android.transition.Transition;
 import android.view.View;
 import android.view.Window;
-import com.leenanxi.android.open.feed.R;
 
 import java.util.ArrayList;
 
@@ -58,7 +57,6 @@ public class TransitionUtils {
         }
         postponeTransitionUntilDecorViewPreDraw(activity);
     }
-
 
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)

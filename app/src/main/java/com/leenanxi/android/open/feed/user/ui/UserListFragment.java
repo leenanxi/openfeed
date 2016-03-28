@@ -11,8 +11,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
-import butterknife.Bind;
-import butterknife.ButterKnife;
 import com.android.volley.VolleyError;
 import com.leenanxi.android.open.feed.R;
 import com.leenanxi.android.open.feed.api.ApiError;
@@ -38,17 +36,20 @@ public abstract class UserListFragment extends Fragment implements RequestFragme
     private final String RETAIN_DATA_KEY_CAN_LOAD_MORE = KEY_PREFIX + "can_load_more";
     private final String RETAIN_DATA_KEY_LOADING_USER_LIST = KEY_PREFIX + "loading_user_list";
     private final String RETAIN_DATA_KEY_VIEW_STATE = KEY_PREFIX + "view_state";
-    @Bind(R.id.swipe_refresh)
     SwipeRefreshLayout mSwipeRefreshLayout;
-    @Bind(R.id.user_list)
     RecyclerView mUserList;
-    @Bind(R.id.progress)
     ProgressBar mProgress;
     private RetainDataFragment mRetainDataFragment;
     private UserAdapter mUserAdapter;
     private LoadMoreAdapter mAdapter;
     private boolean mCanLoadMore;
     private boolean mLoadingUserList;
+
+    private void initViews(View itemView) {
+        mSwipeRefreshLayout = (SwipeRefreshLayout) itemView.findViewById(R.id.swipe_refresh);
+        mUserList = (RecyclerView) itemView.findViewById(R.id.user_list);
+        mProgress = (ProgressBar) itemView.findViewById(R.id.progress);
+    }
 
     @Nullable
     @Override
@@ -60,7 +61,7 @@ public abstract class UserListFragment extends Fragment implements RequestFragme
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ButterKnife.bind(this, view);
+        initViews(view);
     }
 
     @Override

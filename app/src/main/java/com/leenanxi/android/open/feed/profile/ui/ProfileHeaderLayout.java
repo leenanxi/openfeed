@@ -3,6 +3,7 @@ package com.leenanxi.android.open.feed.profile.ui;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.Outline;
 import android.os.Build;
 import android.support.v4.widget.TextViewCompat;
@@ -14,10 +15,6 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import butterknife.Bind;
-import butterknife.BindColor;
-import butterknife.BindDimen;
-import butterknife.ButterKnife;
 import com.leenanxi.android.open.feed.R;
 import com.leenanxi.android.open.feed.api.model.User;
 import com.leenanxi.android.open.feed.api.model.UserInfo;
@@ -34,40 +31,24 @@ import com.leenanxi.android.open.feed.widget.TextCircleImageView;
  * the view measures itself correctly for the first time.
  */
 public class ProfileHeaderLayout extends FrameLayout implements FlexibleSpaceHeaderView {
-    @BindColor(android.R.color.transparent)
     int mStatusBarColorTransparent;
-    @BindDimen(R.dimen.profile_large_avatar_size)
     int mLargeAvatarSize;
-    @BindDimen(R.dimen.profile_small_avatar_size)
     int mSmallAvatarSize;
-    @BindDimen(R.dimen.profile_small_avatar_margin_left)
     int mSmallAvatarMarginLeft;
-    @BindDimen(R.dimen.profile_small_avatar_margin_top)
     int mSmallAvatarMarginTop;
-    @Bind(R.id.dismiss)
     View mDismissView;
-    @Bind(R.id.appBar)
     LinearLayout mAppBarLayout;
-    @Bind(R.id.toolbar)
     Toolbar mToolbar;
-    @Bind(R.id.toolbar_username)
     TextView mToolbarUsernameText;
-    @Bind(R.id.username)
     TextView mUsernameText;
-    @Bind(R.id.signature)
     TextView mSignatureText;
-    @Bind(R.id.joined_at_location)
     JoinedAtLocationAutoGoneTextView mJoinedAtLocationText;
-    @Bind(R.id.follow)
     Button mFollowButton;
-    @Bind(R.id.avatar_container)
     FrameLayout mAvatarContainerLayout;
-    @Bind(R.id.avatar)
     TextCircleImageView mAvatarImage;
     private int mStatusBarColorFullscreen;
     private int mMaxHeight;
     private int mScroll;
-
     public ProfileHeaderLayout(Context context) {
         super(context);
         init();
@@ -88,6 +69,23 @@ public class ProfileHeaderLayout extends FrameLayout implements FlexibleSpaceHea
                                int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         init();
+    }
+
+    private void initViews() {
+        mStatusBarColorTransparent = Color.TRANSPARENT;
+        mLargeAvatarSize = getResources().getDimensionPixelSize(R.dimen.profile_large_avatar_size);
+        mSmallAvatarSize = getResources().getDimensionPixelSize(R.dimen.profile_small_avatar_size);
+        mSmallAvatarMarginLeft = getResources().getDimensionPixelSize(R.dimen.profile_small_avatar_margin_left);
+        mSmallAvatarMarginTop = getResources().getDimensionPixelSize(R.dimen.profile_small_avatar_margin_top);
+        mDismissView = (View) findViewById(R.id.dismiss);
+        mAppBarLayout = (LinearLayout) findViewById(R.id.appBar);
+        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        mToolbarUsernameText = (TextView) findViewById(R.id.toolbar_username);
+        mUsernameText = (TextView) findViewById(R.id.username);
+        mSignatureText = (TextView) findViewById(R.id.signature);
+        mJoinedAtLocationText = (JoinedAtLocationAutoGoneTextView) findViewById(R.id.joined_at_location);
+        mFollowButton = (Button) findViewById(R.id.follow);
+        mAvatarContainerLayout = (FrameLayout) findViewById(R.id.avatar_container);
     }
 
     private void init() {
@@ -112,7 +110,7 @@ public class ProfileHeaderLayout extends FrameLayout implements FlexibleSpaceHea
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-        ButterKnife.bind(this);
+        initViews();
         Context context = getContext();
         mStatusBarColorFullscreen = ViewUtils.getColorFromAttrRes(R.attr.colorPrimaryDark, 0,
                 context);
