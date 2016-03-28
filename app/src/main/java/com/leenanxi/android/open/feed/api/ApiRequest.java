@@ -29,11 +29,6 @@ public class ApiRequest<T> extends Request<T> {
         setRetryPolicy(new RetryPolicy(ApiContract.Request.INITIAL_TIMEOUT_MS,
                 ApiContract.Request.MAX_NUM_RETRIES, ApiContract.Request.BACKOFF_MULTIPLIER));
         addParam(ApiContract.Request.Base.API_KEY, ApiContract.Request.API_KEY);
-        try {
-            LogUtils.d("NETWORK - " + url + " - " + mAuthenticator.getAuthToken());
-        } catch (AuthFailureError authFailureError) {
-            authFailureError.printStackTrace();
-        }
     }
 
     public ApiRequest(int method, String url, TypeToken<T> typeToken, Context context) {
@@ -52,7 +47,6 @@ public class ApiRequest<T> extends Request<T> {
         try {
             responseString = new String(response.data,
                     HttpHeaderParser.parseCharset(response.headers,"UTF-8"));
-            LogUtils.d("NETWORK - " + responseString);
         } catch (UnsupportedEncodingException e) {
             return Response.error(new ParseError(e));
         }

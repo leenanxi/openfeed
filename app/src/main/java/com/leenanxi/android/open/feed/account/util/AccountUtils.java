@@ -242,6 +242,9 @@ public class AccountUtils {
                 AccountContract.INVALID_USER_ID);
     }
 
+
+
+
     public static long getUserId(Context context) {
         return getUserId(getActiveAccount(context), context);
     }
