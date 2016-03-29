@@ -86,6 +86,7 @@ public class ProfileHeaderLayout extends FrameLayout implements FlexibleSpaceHea
         mJoinedAtLocationText = (JoinedAtLocationAutoGoneTextView) findViewById(R.id.joined_at_location);
         mFollowButton = (Button) findViewById(R.id.follow);
         mAvatarContainerLayout = (FrameLayout) findViewById(R.id.avatar_container);
+        mAvatarImage = (TextCircleImageView) findViewById(R.id.avatar);
     }
 
     private void init() {
@@ -234,6 +235,7 @@ public class ProfileHeaderLayout extends FrameLayout implements FlexibleSpaceHea
         if (!ViewUtils.isVisible(mAvatarImage)) {
             // HACK: Don't load avatar again if already loaded by bindUser().
             ImageUtils.loadProfileAvatar(mAvatarImage, userInfo.largeAvatar, context);
+            mAvatarImage.setText(userInfo.name);
         }
         mToolbarUsernameText.setText(userInfo.name);
         mUsernameText.setText(userInfo.name);

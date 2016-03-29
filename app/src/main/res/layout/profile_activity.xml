@@ -109,7 +109,9 @@
                         app:border_color="@android:color/white"
                         app:text_color="@android:color/white"
                         app:border_width="3dp"
+                        android:visibility="invisible"
                         app:background_color="@color/cyan500"
+                        app:default_image="@drawable/md_ic_account_circle_white_48dp"
                         android:layout_width="@dimen/profile_large_avatar_size"
                         android:layout_height="@dimen/profile_large_avatar_size"/>
             </FrameLayout>
