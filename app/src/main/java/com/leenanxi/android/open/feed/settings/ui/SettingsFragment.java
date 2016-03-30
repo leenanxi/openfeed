@@ -13,8 +13,11 @@ public class SettingsFragment extends PreferenceFragmentCompat {
 
     @Override
     public void onDisplayPreferenceDialog(Preference preference) {
-        if (!LicensesDialogPreference.onDisplayPreferenceDialog(this, preference)) {
-            super.onDisplayPreferenceDialog(preference);
+        if (!ThemePickerDialogPreference.onDisplayPreferenceDialog(this, preference)) {
+            if (!LicensesDialogPreference.onDisplayPreferenceDialog(this, preference)) {
+                super.onDisplayPreferenceDialog(preference);
+            }
         }
+
     }
 }

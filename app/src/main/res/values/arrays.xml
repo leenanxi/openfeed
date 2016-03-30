@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="theme_colors">
+        <item>@color/quantum_cyan</item>
+        <item>@color/quantum_yellow</item>
+        <item>@color/quantum_grey</item>
+        <item>@color/quantum_googgreen</item>
+        <item>@color/quantum_googred</item>
+        <item>@color/quantum_black_100</item>
+        <item>@color/quantum_amber800</item>
+        <item>@color/quantum_cyan100</item>
+    </array>
+</resources>

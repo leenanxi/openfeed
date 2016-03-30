@@ -17,20 +17,22 @@ public class CacheHelper {
     private static final int APP_VERSION = 1;
     private static final String KEY = "DUALCACHE";
     private static final ExecutorService sExecutorService = Executors.newSingleThreadExecutor();
-    private static DualCache<Object> mCache;
+    private static volatile DualCache<Object> mCache;
 
     private CacheHelper() {
     }
 
     public static DualCache<Object> getDualCache(final Context context) {
-        synchronized (DISK_CACHE_LOCK) {
-            if (mCache == null) {
+        if (mCache == null) {
+            synchronized (DISK_CACHE_LOCK) {
                 DualCacheContextUtils.setContext(context.getApplicationContext());
                 mCache = new DualCacheBuilder<Object>(KEY, APP_VERSION, Object.class)
                         .useDefaultSerializerInRam(MAX_RAM_CACHE_BYTES)
                         .useDefaultSerializerInDisk(MAX_DISK_CACHE_BYTES, true);
             }
+
         }
+
         return mCache;
     }
 

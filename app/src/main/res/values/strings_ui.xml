@@ -22,8 +22,8 @@
     <string name="main_notification">提醒</string>
     <string name="main_doumail">豆邮</string>
     <string name="main_search">搜索</string>
-    <string name="home_broadcast">友邻广播</string>
-    <string name="home_nine_and_quater">九点一刻</string>
+    <string name="home_broadcast">广播</string>
+    <string name="home_communities">社群</string>
     <string name="home_discover">浏览发现</string>
     <string name="home_online">线上活动</string>
     <string name="broadcast_rebroadcasted_by_format">由 %1$s 转播 ↴</string>
@@ -79,6 +79,8 @@
     <string name="profile_broadcasts_empty">还没有发过广播</string>
     <string name="settings_title">设置</string>
     <string name="settings_misc_title">其他</string>
+    <string name="settings_theme_picker_title">主题颜色</string>
+    <string name="settings_theme_picker_summary">选择系统显示的颜色风格</string>
     <string name="settings_auto_refresh_home_title">打开时自动刷新主页</string>
     <string name="settings_show_title_for_link_entity_title">显示完整链接文本</string>
     <string name="settings_show_title_for_link_entity_summary">替换经过 dou.bz 缩短的链接</string>

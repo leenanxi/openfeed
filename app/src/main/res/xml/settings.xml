@@ -22,6 +22,9 @@
                 android:defaultValue="@bool/pref_default_value_always_copy_to_clipboard_as_text"
                 android:title="@string/settings_always_copy_to_clipboard_as_text_title"
                 android:summary="@string/settings_always_copy_to_clipboard_as_text_summary"/>
+        <com.leenanxi.android.open.feed.settings.ui.ThemePickerDialogPreference
+                android:title="@string/settings_theme_picker_title"
+                android:summary="@string/settings_theme_picker_summary"/>
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/settings_about_title">
         <com.leenanxi.android.open.feed.settings.ui.LicensesDialogPreference

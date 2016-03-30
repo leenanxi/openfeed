@@ -8,7 +8,8 @@ import com.leenanxi.android.open.feed.account.util.AccountUtils;
 
 public class Volley {
     private static final Object INSTANCE_LOCK = new Object();
-    private static Volley sInstance;
+    private static volatile Volley sInstance;
+
     private Authenticator mAuthenticator;
     private RequestQueue mRequestQueue;
 
@@ -24,8 +25,8 @@ public class Volley {
     }
 
     public static Volley getInstance(Context context) {
-        synchronized (INSTANCE_LOCK) {
-            if (sInstance == null) {
+        if (sInstance == null) {
+            synchronized (INSTANCE_LOCK) {
                 sInstance = new Volley(context);
             }
         }

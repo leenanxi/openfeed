@@ -45,11 +45,11 @@ public class HomeFragment extends Fragment {
         MainActivity activity = (MainActivity) getActivity();
         activity.setToolbar(mToolbar);
         mTabAdapter = new TabFragmentPagerAdapter(getChildFragmentManager());
-        mTabAdapter.addTab(new SimpleRecyclerViewFragment(), getString(R.string.home_broadcast));
-        mTabAdapter.addTab(new Fragment(), getString(R.string.home_nine_and_quater));
+        mTabAdapter.addTab(BroadcastListFragment.newInstance(), getString(R.string.home_broadcast));
+        mTabAdapter.addTab(new Fragment(), getString(R.string.home_communities));
         mTabAdapter.addTab(new Fragment(), getString(R.string.home_discover));
-        mTabAdapter.addTab(BroadcastListFragment.newInstance(), getString(R.string.home_online));
-        mViewPager.setOffscreenPageLimit(3);
+        mTabAdapter.addTab(new SimpleRecyclerViewFragment(), getString(R.string.home_online));
+        mViewPager.setOffscreenPageLimit(4);
         mViewPager.setAdapter(mTabAdapter);
         mTabLayout.setupWithViewPager(mViewPager);
         mFab = (FloatingActionButton) view.findViewById(R.id.fab);
