@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import com.leenanxi.android.open.feed.R;
 import com.leenanxi.android.open.feed.broadcast.ui.BroadcastListFragment;
+import com.leenanxi.android.open.feed.collexion.ui.CollexionGridFragment;
 import com.leenanxi.android.open.feed.link.UriHandler;
 import com.leenanxi.android.open.feed.simple.SimpleRecyclerViewFragment;
 import com.leenanxi.android.open.feed.widget.TabFragmentPagerAdapter;
@@ -46,7 +47,7 @@ public class HomeFragment extends Fragment {
         activity.setToolbar(mToolbar);
         mTabAdapter = new TabFragmentPagerAdapter(getChildFragmentManager());
         mTabAdapter.addTab(BroadcastListFragment.newInstance(), getString(R.string.home_broadcast));
-        mTabAdapter.addTab(new Fragment(), getString(R.string.home_communities));
+        mTabAdapter.addTab(new CollexionGridFragment(), getString(R.string.home_communities));
         mTabAdapter.addTab(new Fragment(), getString(R.string.home_discover));
         mTabAdapter.addTab(new SimpleRecyclerViewFragment(), getString(R.string.home_online));
         mViewPager.setOffscreenPageLimit(4);

@@ -61,7 +61,7 @@ public class SingleMainActivity extends MainActivity {
                     });
         }
         NotificationListFragment notificationListFragment = (NotificationListFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.notification_list_fragment);
+                .findFragmentById(R.id.notification_layout);
         notificationListFragment.setUnreadNotificationCountListener(this);
         setNotificationListFragment(notificationListFragment);
         super.setContentViews(savedInstanceState);

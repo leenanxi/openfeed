@@ -25,6 +25,7 @@ import com.leenanxi.android.open.feed.widget.NoChangeAnimationItemAnimator;
 import com.leenanxi.android.open.feed.widget.OnVerticalScrollListener;
 import com.leenanxi.android.open.feed.widget.RetainDataFragment;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class NotificationListFragment extends Fragment implements RequestFragment.Listener {
@@ -41,6 +42,9 @@ public class NotificationListFragment extends Fragment implements RequestFragmen
     SwipeRefreshLayout mSwipeRefreshLayout;
     RecyclerView mNotificationList;
     ProgressBar mProgress;
+    View mButtonDoneAll;
+    View mButtonHistory;
+    View mNoNotifacaitonWrapper;
     private RetainDataFragment mRetainDataFragment;
     private NotificationAdapter mNotificationAdapter;
     private LoadMoreAdapter mAdapter;
@@ -48,17 +52,29 @@ public class NotificationListFragment extends Fragment implements RequestFragmen
     private boolean mLoadingNotificationList;
     private UnreadNotificationCountListener mUnreadNotificationCountListener;
 
+
     private void initViews(View itemView) {
         mSwipeRefreshLayout = (SwipeRefreshLayout) itemView.findViewById(R.id.swipe_refresh);
         mNotificationList = (RecyclerView) itemView.findViewById(R.id.notification_list);
         mProgress = (ProgressBar) itemView.findViewById(R.id.progress);
+        mButtonDoneAll = itemView.findViewById(R.id.done_all);
+        mButtonHistory = itemView.findViewById(R.id.notification_history);
+        mNoNotifacaitonWrapper = itemView.findViewById(R.id.no_notification_wrapper);
+        mButtonDoneAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                List<Notification> notificationList = new ArrayList<Notification>();
+                mNotificationAdapter.replace(notificationList);
+            }
+        });
     }
+
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.notification_list_fragment, container, false);
+        return inflater.inflate(R.layout.notification_layout, container, false);
     }
 
     @Override
@@ -83,6 +99,21 @@ public class NotificationListFragment extends Fragment implements RequestFragmen
         List<Notification> notificationList = mRetainDataFragment.remove(
                 RETAIN_DATA_KEY_NOTIFICATION_LIST);
         mNotificationAdapter = new NotificationAdapter(notificationList, activity);
+
+        mNotificationAdapter.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
+            @Override
+            public void onChanged() {
+                boolean hasNotification = mNotificationAdapter.getList().size() > 0;
+                if(hasNotification) {
+                    mButtonDoneAll.setVisibility(View.VISIBLE);
+                    mNoNotifacaitonWrapper.setVisibility(View.GONE);
+                } else {
+                    mButtonDoneAll.setVisibility(View.GONE);
+                    mNoNotifacaitonWrapper.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+
         mAdapter = new LoadMoreAdapter(R.layout.load_more_item, mNotificationAdapter);
         mNotificationList.setAdapter(mAdapter);
         mNotificationList.addOnScrollListener(new OnVerticalScrollListener() {
@@ -151,18 +182,7 @@ public class NotificationListFragment extends Fragment implements RequestFragmen
         }
     }
 
-    public void refresh() {
-        // DISABLED: This always make users miss unread notifications. Should wait for another API
-        // that can return a full list of notification and mark items as read explicitly.
-//        // Don't lose unread notifications if the refresh is not started by user.
-//        if (getUnreadNotificationCount() > 0) {
-//            return;
-//        }
-//        if (!mNotificationAdapter.getList().isEmpty()) {
-//            mSwipeRefreshLayout.setRefreshing(true);
-//        }
-//        loadNotificationList(false);
-    }
+
 
     public void setUnreadNotificationCountListener(UnreadNotificationCountListener listener) {
         mUnreadNotificationCountListener = listener;
@@ -208,6 +228,7 @@ public class NotificationListFragment extends Fragment implements RequestFragmen
             List<Notification> notificationList = result.notifications;
             // Workaround Frodo API bug.
             //mCanLoadMore = notificationList.size() == state.count;
+
             mCanLoadMore = notificationList.size() > 0;
             if (state.loadMore) {
                 mNotificationAdapter.addAll(notificationList);
@@ -268,6 +289,10 @@ public class NotificationListFragment extends Fragment implements RequestFragmen
         }
         CacheHelper.putData(ApiContract.CacheKeys.NOTIFICATION_LIST, notificationList,
                 getActivity());
+    }
+
+    public void refresh() {
+        //TODO: refresh
     }
 
     public interface UnreadNotificationCountListener {

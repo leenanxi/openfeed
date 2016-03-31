@@ -31,11 +31,11 @@
             android:fitsSystemWindows="true"
             android:layout_gravity="end">
         <fragment
-                android:id="@+id/notification_list_fragment"
+                android:id="@+id/notification_layout"
                 android:name="com.leenanxi.android.open.feed.notification.ui.NotificationListFragment"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                tools:layout="@layout/notification_list_fragment"/>
+                tools:layout="@layout/notification_layout"/>
 
     </android.support.design.widget.NavigationView>
 

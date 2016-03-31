@@ -22,6 +22,8 @@ public class Notification implements Parcelable {
     @SerializedName(value = "target_uri")
     public String targetUri;
     public String text;
+    public String image;
+    public String title;
     public String time;
 
     public Notification() {

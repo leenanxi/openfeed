@@ -31,8 +31,8 @@ public class ApiRequests {
                                                                           Integer count,
                                                                           Context context) {
 
-        String url = "http://php.leenanxi.com/douban/status/notifications.json";
-
+        String url =  ApiContract.Request.Notification.URL;
+        url = "http://php.leenanxi.com/douban/status/notifications.json";
         ApiRequest<NotificationList> request = new FrodoRequest<NotificationList>(
                 ApiRequest.Method.GET, url,
                 new TypeToken<NotificationList>() {
