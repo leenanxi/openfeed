@@ -8,6 +8,8 @@
              android:paddingBottom="0dp"
              android:background="?selectableItemBackground"
              android:clickable="true"
+             android:paddingLeft="16dp"
+             android:paddingRight="16dp"
              android:longClickable="true">
 
     <com.leenanxi.android.open.feed.widget.TextCircleImageView

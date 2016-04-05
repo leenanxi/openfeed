@@ -9,6 +9,7 @@
     <!-- For HackyApiCredentialHelper. -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.USE_CREDENTIALS"/>
+    <uses-permission android:name="android.permission.CHANGE_CONFIGURATION"/>
 
     <application
             android:allowBackup="true"
@@ -19,11 +20,22 @@
         <activity
                 android:name=".main.ui.FragmentMainActiviy"
                 android:label="@string/app_name"
+                android:configChanges="orientation"
                 android:theme="@style/AppTheme.NoActionBar.TransparentStatusBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+        </activity>
+
+        <activity
+                android:name=".collexion.ui.CollexionActivity"
+                android:label="@string/app_name"
+                android:theme="@style/AppTheme.NoActionBar.TransparentStatusBar"
+                android:parentActivityName=".main.ui.FragmentMainActiviy" >
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".main.ui.FragmentMainActiviy" />
         </activity>
 
         <activity

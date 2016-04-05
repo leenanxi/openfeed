@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:background="?selectableItemBackground"
+                android:clickable="true"
+                android:layout_height="36dp">
+    <TextView android:text="我关注的"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:gravity="center"
+              android:textSize="16sp"
+              android:textColor="@color/quantum_grey700"
+              android:layout_centerVertical="true"
+              android:layout_alignParentStart="true"
+              android:id="@+id/title"/>
+    <Button
+            android:background="?android:attr/selectableItemBackground"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:textSize="14sp"
+            android:text="更多"
+            android:layout_alignParentBottom="true"
+            android:id="@+id/buttonMore"
+            android:textColor="@color/quantum_lightblue"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"/>
+
+</RelativeLayout>

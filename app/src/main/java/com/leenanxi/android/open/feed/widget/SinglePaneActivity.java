@@ -16,6 +16,7 @@ import com.leenanxi.android.open.feed.R;
  */
 public abstract class SinglePaneActivity extends AppCompatActivity {
     private Fragment mFragment;
+    private static final String TAG = "SINGLE_PANE";
 
     /**
      * Converts an intent into a {@link android.os.Bundle} suitable for use as fragment arguments.
@@ -48,12 +49,7 @@ public abstract class SinglePaneActivity extends AppCompatActivity {
         }
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        if (toolbar != null) {
-            setSupportActionBar(toolbar);
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        }
-
+        setToolbar(toolbar);
 
         final String customTitle = getIntent().getStringExtra(Intent.EXTRA_TITLE);
         setTitle(customTitle != null ? customTitle : getTitle());
@@ -62,10 +58,10 @@ public abstract class SinglePaneActivity extends AppCompatActivity {
             mFragment = onCreatePane();
             mFragment.setArguments(intentToFragmentArguments(getIntent()));
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.rootContainer, mFragment, "single_pane")
+                    .add(R.id.rootContainer, mFragment, TAG)
                     .commit();
         } else {
-            mFragment = getSupportFragmentManager().findFragmentByTag("single_pane");
+            mFragment = getSupportFragmentManager().findFragmentByTag(TAG);
         }
     }
 
@@ -73,6 +69,13 @@ public abstract class SinglePaneActivity extends AppCompatActivity {
         return R.layout.main_single_pane_activity;
     }
 
+
+    public void setToolbar(Toolbar toolbar) {
+        if (toolbar != null) {
+            setSupportActionBar(toolbar);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+    }
     /**
      * Called in <code>onCreate</code> when the fragment constituting this activity is needed.
      * The returned fragment's arguments will be set to the intent used to invoke this activity.

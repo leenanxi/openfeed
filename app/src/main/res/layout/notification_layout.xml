@@ -32,8 +32,7 @@
                     android:id="@+id/done_all"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"
-                    android:contentDescription="清空所有"
+                    android:contentDescription="清空所有通知"
                     android:layout_gravity="right|center_vertical"
                     android:src="@drawable/md_ic_done_all_grey_700_18dp"/>
         </FrameLayout>
@@ -47,8 +46,6 @@
     <FrameLayout
             android:layout_below="@+id/notification_Title_wrapper"
             android:layout_above="@+id/notification_bottom_wrapper"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 

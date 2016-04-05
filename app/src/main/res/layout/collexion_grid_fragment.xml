@@ -7,15 +7,14 @@
             android:id="@+id/swipe_refresh"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-        <android.support.v7.widget.RecyclerView
-                android:id="@+id/broadcast_list"
+        <com.leenanxi.android.open.feed.collexion.ui.AutofitRecyclerView
+                android:id="@+id/recyclerView"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:paddingLeft="@dimen/card_list_horizontal_padding"
-                android:paddingRight="@dimen/card_list_horizontal_padding"
+                android:layout_height="wrap_content"
                 android:fadingEdgeLength="0dp"
+                android:padding="8dp"
+                android:columnWidth="136dp"
                 android:clipToPadding="false"
-                android:scrollbars="vertical"
                 android:scrollbarStyle="outsideOverlay"/>
     </com.leenanxi.android.open.feed.widget.FriendlySwipeRefreshLayout>
     <ProgressBar
