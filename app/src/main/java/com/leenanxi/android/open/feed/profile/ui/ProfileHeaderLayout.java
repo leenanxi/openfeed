@@ -146,7 +146,7 @@ public class ProfileHeaderLayout extends FrameLayout implements FlexibleSpaceHea
         avatarContainerLayoutParams.topMargin = avatarMarginTop;
         float avatarScale = MathUtils.lerp(1, (float) mSmallAvatarSize / mLargeAvatarSize,
                 avatarHorizontalFraction);
-        mAvatarContainerLayout.setPivotX(0);
+        mAvatarContainerLayout.setPivotX(ViewUtils.dpToPx(52,getContext()));
         mAvatarContainerLayout.setPivotY(0);
         mAvatarContainerLayout.setScaleX(avatarScale);
         mAvatarContainerLayout.setScaleY(avatarScale);
@@ -156,7 +156,9 @@ public class ProfileHeaderLayout extends FrameLayout implements FlexibleSpaceHea
                 child.setAlpha(Math.max(0, 1 - getFraction() * 2));
             }
         }
-        mToolbarUsernameText.setAlpha(Math.max(0, getFraction() * 2 - 1));
+        float alpha = Math.max(0, getFraction() * 2 - 1);
+        mToolbar.getNavigationIcon().setAlpha((int) (255 * alpha));
+        mToolbarUsernameText.setAlpha(alpha);
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
     }
 

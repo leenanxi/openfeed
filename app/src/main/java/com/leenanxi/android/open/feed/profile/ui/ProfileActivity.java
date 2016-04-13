@@ -106,7 +106,10 @@ public class ProfileActivity extends AppCompatActivity implements RequestFragmen
                 exit();
             }
         });
+
         setSupportActionBar(mToolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        mToolbar.setNavigationIcon(R.drawable.md_ic_close_white_24dp);
         getSupportActionBar().setTitle(null);
         UserInfo userInfo = mRetainDataFragment.remove(RETAIN_DATA_KEY_USER_INFO);
         Intent intent = getIntent();
@@ -198,7 +201,9 @@ public class ProfileActivity extends AppCompatActivity implements RequestFragmen
     public boolean onOptionsItemSelected(MenuItem item) {
         // TODO
         int id = item.getItemId();
-        if (id == R.id.action_send_doumail) {
+        if (id == android.R.id.home) {
+            onBackPressed();
+        } else  if (id == R.id.action_send_doumail) {
             return true;
         } else if (id == R.id.action_blacklist) {
             return true;
