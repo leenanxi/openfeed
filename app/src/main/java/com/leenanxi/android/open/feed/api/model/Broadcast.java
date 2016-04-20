@@ -132,7 +132,7 @@ public class Broadcast implements Parcelable {
      */
     public String getActionWithTime(Context context) {
         return context.getString(R.string.broadcast_time_action_format,
-                TimeUtils.formatDoubanDateTime(createdAt, context), action);
+                TimeUtils.formatDateTime(createdAt, context), action);
     }
 
     public String getLikeCountString() {

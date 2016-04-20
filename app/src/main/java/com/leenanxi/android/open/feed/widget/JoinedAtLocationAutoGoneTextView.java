@@ -32,17 +32,17 @@ public class JoinedAtLocationAutoGoneTextView extends TimeTextView {
     }
 
     @Override
-    public void setDoubanTime(String doubanTime) {
+    public void setTime(String time) {
         throw new UnsupportedOperationException("Use setJoinedAtAndLocation() instead.");
     }
 
-    public void setJoinedAtAndLocation(String doubanTime, String location) {
+    public void setJoinedAtAndLocation(String time, String location) {
         mLocation = location;
         try {
-            setTime(TimeUtils.parseDoubanDateTime(doubanTime));
+            setTime(TimeUtils.parseDateTime(time));
         } catch (ParseException e) {
-            LogUtils.e("Unable to parse date time: " + doubanTime);
-            setTimeText(doubanTime);
+            LogUtils.e("Unable to parse date time: " + time);
+            setTimeText(time);
             e.printStackTrace();
         }
     }

@@ -49,14 +49,14 @@ public class TimeTextView extends TextView {
     }
 
     /**
-     * Should behave the same as {@link TimeUtils#formatDoubanDateTime(String, Context)}.
+     * Should behave the same as {@link TimeUtils#formatDateTime(String, Context)}.
      */
-    public void setDoubanTime(String doubanTime) {
+    public void setTime(String time) {
         try {
-            setTime(TimeUtils.parseDoubanDateTime(doubanTime));
+            setTime(TimeUtils.parseDateTime(time));
         } catch (ParseException e) {
-            LogUtils.e("Unable to parse date time: " + doubanTime);
-            setText(doubanTime);
+            LogUtils.e("Unable to parse date time: " + time);
+            setText(time);
             e.printStackTrace();
         }
     }

@@ -98,7 +98,7 @@
     <string name="settings_about_douya_title">关于豆芽</string>
     <string name="about_title">关于</string>
     <string name="about_name">@string/app_name</string>
-    <string name="about_words">Douban, Yet Another</string>
+    <string name="about_words">About Yet Another</string>
     <string name="about_version_format">版本 %1$s</string>
     <string name="about_credit">梦断代码</string>
     <string name="about_konami_code_detected">彩蛋正在计划中</string>

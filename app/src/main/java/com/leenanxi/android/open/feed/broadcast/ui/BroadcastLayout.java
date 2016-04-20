@@ -133,7 +133,7 @@ public class BroadcastLayout extends LinearLayout {
             }
         });
         mNameText.setText(broadcast.author.name);
-        mTimeActionText.setDoubanTimeAndAction(broadcast.createdAt, broadcast.action);
+        mTimeActionText.setTimeAndAction(broadcast.createdAt, broadcast.action);
         boolean isRebind = mBoundBroadcastId != null && mBoundBroadcastId == broadcast.id;
         // HACK: Attachment and text should not change on rebind.
         if (!isRebind) {

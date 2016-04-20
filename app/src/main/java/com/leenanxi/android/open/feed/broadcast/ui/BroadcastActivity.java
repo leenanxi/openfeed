@@ -546,7 +546,7 @@ public class BroadcastActivity extends AppCompatActivity implements RequestFragm
     @Override
     public void onReplyToComment(Comment comment) {
         mCommentEdit.getText().replace(mCommentEdit.getSelectionStart(),
-                mCommentEdit.getSelectionEnd(), DoubanUtils.getAtUserString(comment.author));
+                mCommentEdit.getSelectionEnd(), '@' + comment.author.uid + ' ');
         onComment();
     }
 

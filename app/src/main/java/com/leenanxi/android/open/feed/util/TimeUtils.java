@@ -13,35 +13,37 @@ import java.util.TimeZone;
 
 public class TimeUtils {
     private static final Locale DEFAULT_LOCAL = Locale.CHINA;
-    private static final String DEFAULT_TIME_ZONE = "CTT";
     private static final SimpleDateFormat[] ACCEPTED_TIMESTAMP_FORMATS = {
             new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", DEFAULT_LOCAL),
             new SimpleDateFormat("yyyy/MM/dd HH:mm:ss", DEFAULT_LOCAL)
     };
-
-    public static Date parseTimestamp(String timestamp) throws ParseException {
-        if (timestamp.contains("T")) {
-            return ISO8601Utils.parse(timestamp, new ParsePosition(0));
+    
+    public static Date parseDateTime(String source) throws ParseException {
+        if (source.contains("T")) {
+            return ISO8601Utils.parse(source, new ParsePosition(0));
         }
         for (SimpleDateFormat format : ACCEPTED_TIMESTAMP_FORMATS) {
             try {
-                return format.parse(timestamp);
+                return format.parse(source);
             } catch (ParseException ex) {
                 continue;
             }
         }
-        throw new ParseException("Unsupported date format: \"" + timestamp + "\"",
+        throw new ParseException("Unsupported date format: \"" + source + "\"",
                 0);
     }
+    
+    
 
-    public static String parseTimeString(Date source) {
-        return ISO8601Utils.format(source, true, TimeZone.getDefault());
+    public static String formatDateTime(String source, Context context) {
+        try {
+            Date dateTime = parseDateTime(source);
+            return  formatDateTime(dateTime,context);
+        } catch (Exception e) {
+            return source;
+        }
     }
 
-    public static Date parseDoubanDateTime(String source) throws ParseException {
-        Date d = parseTimestamp(source);
-        return parseTimestamp(source);
-    }
 
     public static String formatDateTime(Date source, Context context) {
         Calendar now = Calendar.getInstance();
@@ -75,13 +77,6 @@ public class TimeUtils {
     }
 
 
-    public static String formatDoubanDateTime(String doubanDateTime, Context context) {
-        try {
-            return formatDateTime(parseDoubanDateTime(doubanDateTime), context);
-        } catch (Exception e) {
-            return doubanDateTime;
-        }
-    }
 
     public static String formatDate(Date date, Locale locale, Context context) {
         Calendar now = Calendar.getInstance();
@@ -102,5 +97,14 @@ public class TimeUtils {
 
     public static String formatDate(Date source, Context context) {
         return formatDate(source, DEFAULT_LOCAL, context);
+    }
+
+    public static String formatDate(String source, Context context) {
+        try {
+            Date dateTime = parseDateTime(source);
+            return formatDate(dateTime, DEFAULT_LOCAL, context);
+        } catch (Exception e) {
+            return source;
+        }
     }
 }

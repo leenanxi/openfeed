@@ -99,7 +99,7 @@ public class ProfileBroadcastsLayout extends FriendlyCardView {
                 ViewUtils.setVisibleOrGone(holder.image, !TextUtils.isEmpty(imageUrl));
                 ImageUtils.loadImage(holder.image, imageUrl, context);
                 holder.textText.setText(broadcast.getTextWithEntities(context));
-                holder.timeActionText.setDoubanTimeAndAction(broadcast.createdAt, broadcast.action);
+                holder.timeActionText.setTimeAndAction(broadcast.createdAt, broadcast.action);
                 broadcastLayout.setOnClickListener(new OnClickListener() {
                     @Override
                     public void onClick(View view) {

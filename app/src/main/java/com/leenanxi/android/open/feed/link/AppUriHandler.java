@@ -8,7 +8,7 @@ import com.leenanxi.android.open.feed.broadcast.ui.BroadcastActivity;
 import com.leenanxi.android.open.feed.profile.ui.ProfileActivity;
 import com.leenanxi.android.open.feed.util.UriUtils;
 
-public class DoubanUriHandler {
+public class AppUriHandler {
     private static final String AUTHORITY = "www.douban.com";
     private static final String AUTHORITY_FRODO = "douban.com";
     private static final UriMatcher MATCHER;
@@ -20,7 +20,7 @@ public class DoubanUriHandler {
         }
     }
 
-    private DoubanUriHandler() {
+    private AppUriHandler() {
     }
 
     public static boolean open(Uri uri, Context context) {

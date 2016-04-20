@@ -49,7 +49,7 @@ public class CommentAdapter extends ClickableSimpleAdapter<Comment, CommentAdapt
             }
         });
         holder.nameText.setText(comment.author.name);
-        holder.timeText.setDoubanTime(comment.createdAt);
+        holder.timeText.setTime(comment.createdAt);
         holder.textText.setText(comment.getContentWithEntities(context));
     }
 

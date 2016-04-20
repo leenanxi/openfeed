@@ -20,7 +20,7 @@ public class UriHandler {
     }
 
     private static void open(Uri uri, Context context, boolean enableCustomTabs) {
-        if (DoubanUriHandler.open(uri, context)) {
+        if (AppUriHandler.open(uri, context)) {
             return;
         }
         switch (Settings.OPEN_URL_WITH_METHOD.getEnumValue(context)) {

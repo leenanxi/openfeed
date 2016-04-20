@@ -31,22 +31,22 @@ public class TimeActionTextView extends TimeTextView {
     }
 
     @Override
-    public void setDoubanTime(String doubanTime) {
-        throw new UnsupportedOperationException("Use setDoubanTimeAndAction() instead.");
+    public void setTime(String time) {
+        throw new UnsupportedOperationException("Use setTimeAndAction() instead.");
     }
 
     /**
      * Should behave the same as {@link Broadcast#getActionWithTime(Context)}.
      */
-    public void setDoubanTimeAndAction(String doubanTime, String action) {
+    public void setTimeAndAction(String time, String action) {
         mAction = action;
         try {
-            Date date = TimeUtils.parseDoubanDateTime(doubanTime);
+            Date date = TimeUtils.parseDateTime(time);
             setTime(date);
         } catch (ParseException e) {
-            LogUtils.e("Unable to parse date time: " + doubanTime);
+            LogUtils.e("Unable to parse date time: " + time);
             e.printStackTrace();
-            setTimeText(doubanTime);
+            setTimeText(time);
         }
     }
 

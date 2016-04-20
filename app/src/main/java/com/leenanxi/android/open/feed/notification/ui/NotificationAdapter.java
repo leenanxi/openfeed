@@ -49,7 +49,7 @@ public class NotificationAdapter extends SimpleAdapter<Notification,
             }
         });
         holder.textText.setText(notification.text);
-        holder.timeText.setDoubanTime(notification.time);
+        holder.timeText.setTime(notification.time);
         holder.titleText.setText(notification.title);
         ImageUtils.loadAvatar(holder.image,notification.image,context);
     }
